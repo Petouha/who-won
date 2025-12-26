@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Won - FIFA Match Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1 class="title">⚽ WHO WON</h1>
+            <p class="subtitle">Track Your FIFA Matches</p>
+        </header>
+
+        <div class="menu-grid">
+            <div class="menu-card" onclick="navigateTo('players')">
+                <div class="card-icon">👥</div>
+                <h2>Players</h2>
+                <p>Add a new player</p>
+            </div>
+
+            <div class="menu-card" onclick="navigateTo('add-match')">
+                <div class="card-icon">🎮</div>
+                <h2>New Match</h2>
+                <p>Record a match</p>
+            </div>
+
+            <div class="menu-card" onclick="navigateTo('history')">
+                <div class="card-icon">📊</div>
+                <h2>History</h2>
+                <p>View all matches</p>
+            </div>
+
+            <div class="menu-card" onclick="navigateTo('leaderboard')">
+                <div class="card-icon">🏆</div>
+                <h2>Leaderboard</h2>
+                <p>View statistics</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

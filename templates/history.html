@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Who Won</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="back-button" onclick="goBack()">← Back</div>
+        
+        <header class="page-header">
+            <h1>📊 Match History</h1>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('chronological')">Chronological</button>
+            <button class="tab-button" onclick="switchTab('matchup')">Matchup</button>
+        </div>
+
+        <div id="chronologicalTab" class="tab-content active">
+            <div id="chronologicalList" class="history-list"></div>
+        </div>
+
+        <div id="matchupTab" class="tab-content">
+            <div class="matchup-selector">
+                <div class="form-group">
+                    <label for="matchupPlayer1">Player 1</label>
+                    <select id="matchupPlayer1" class="matchup-select">
+                        <option value="">Select a player</option>
+                    </select>
+                </div>
+                <div class="vs-text">VS</div>
+                <div class="form-group">
+                    <label for="matchupPlayer2">Player 2</label>
+                    <select id="matchupPlayer2" class="matchup-select">
+                        <option value="">Select a player</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="matchupSuggestions" class="matchup-suggestions"></div>
+
+            <div id="matchupStats" class="matchup-stats hidden"></div>
+            <div id="matchupList" class="history-list"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/history.js') }}"></script>
+</body>
+</html>

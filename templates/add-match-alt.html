@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Match - Who Won</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="back-button" onclick="goBack()">← Back</div>
+        
+        <div class="view-toggle">
+            <button onclick="window.location.href='/add-match-page'" class="toggle-btn">Classic View</button>
+            <button class="toggle-btn active">Card View</button>
+        </div>
+        
+        <header class="page-header">
+            <h1>🎮 New Match</h1>
+        </header>
+
+        <div class="match-form-alt">
+            <!-- Player Selection -->
+            <div class="step-section" id="playerSelection">
+                <h2 class="step-title">Select Players</h2>
+                <div class="player-cards-grid" id="playerCardsGrid"></div>
+            </div>
+
+            <!-- Match Details -->
+            <div class="step-section hidden" id="matchDetails">
+                <h2 class="step-title">Match Details</h2>
+                
+                <div class="match-setup">
+                    <!-- Player 1 Side -->
+                    <div class="player-side">
+                        <div class="player-badge" id="player1Badge"></div>
+                        
+                        <div class="team-selection">
+                            <h3>Team</h3>
+                            <div class="favorite-teams" id="favoriteTeams1"></div>
+                            <div class="team-search">
+                                <input type="text" id="teamSearch1" placeholder="Search team..." autocomplete="off">
+                                <div class="team-dropdown" id="teamDropdown1"></div>
+                            </div>
+                            <div class="selected-team" id="selectedTeam1">No team selected</div>
+                        </div>
+
+                        <div class="score-selector">
+                            <h3>Score</h3>
+                            <div class="score-controls">
+                                <button class="score-btn minus" onclick="changeScore(1, -1)">−</button>
+                                <span class="score-value" id="score1">0</span>
+                                <button class="score-btn plus" onclick="changeScore(1, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vs-separator">VS</div>
+
+                    <!-- Player 2 Side -->
+                    <div class="player-side">
+                        <div class="player-badge" id="player2Badge"></div>
+                        
+                        <div class="team-selection">
+                            <h3>Team</h3>
+                            <div class="favorite-teams" id="favoriteTeams2"></div>
+                            <div class="team-search">
+                                <input type="text" id="teamSearch2" placeholder="Search team..." autocomplete="off">
+                                <div class="team-dropdown" id="teamDropdown2"></div>
+                            </div>
+                            <div class="selected-team" id="selectedTeam2">No team selected</div>
+                        </div>
+
+                        <div class="score-selector">
+                            <h3>Score</h3>
+                            <div class="score-controls">
+                                <button class="score-btn minus" onclick="changeScore(2, -1)">−</button>
+                                <span class="score-value" id="score2">0</span>
+                                <button class="score-btn plus" onclick="changeScore(2, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Penalty Section -->
+                <div class="penalty-toggle">
+                    <label class="penalty-checkbox">
+                        <input type="checkbox" id="penaltyToggle" onchange="togglePenalties()">
+                        <span></span>
+                    </label>
+                </div>
+
+                <div class="penalty-section-alt hidden" id="penaltySection">
+                    <div class="penalty-controls">
+                        <div class="penalty-player">
+                            <h4 id="penaltyName1"></h4>
+                            <div class="score-controls">
+                                <button class="score-btn minus" onclick="changePenaltyScore(1, -1)">−</button>
+                                <span class="score-value" id="penScore1">0</span>
+                                <button class="score-btn plus" onclick="changePenaltyScore(1, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="penalty-vs">Penalties</div>
+                        <div class="penalty-player">
+                            <h4 id="penaltyName2"></h4>
+                            <div class="score-controls">
+                                <button class="score-btn minus" onclick="changePenaltyScore(2, -1)">−</button>
+                                <span class="score-value" id="penScore2">0</span>
+                                <button class="score-btn plus" onclick="changePenaltyScore(2, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-save" onclick="saveMatch()">
+                    <span class="btn-text">Save Match</span>
+                    <span class="btn-loading">⏳ Saving...</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/add-match-alt.js') }}"></script>
+</body>
+</html>

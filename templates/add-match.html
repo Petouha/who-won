@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Match - Who Won</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="back-button" onclick="goBack()">← Back</div>
+        
+        <div class="view-toggle">
+            <button class="toggle-btn active">Classic View</button>
+            <button onclick="window.location.href='/add-match-alt-page'" class="toggle-btn">Card View</button>
+        </div>
+        
+        <header class="page-header">
+            <h1>🎮 New Match</h1>
+        </header>
+
+        <div class="form-container">
+            <form id="matchForm">
+                <div class="match-players">
+                    <div class="player-section">
+                        <h3>Player 1</h3>
+                        <div class="form-group">
+                            <label for="player1">Player</label>
+                            <select id="player1" name="player1" required>
+                                <option value="">Select a player</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="team1">Team</label>
+                            <input type="text" id="team1" name="team1" required placeholder="Type team name..." autocomplete="off">
+                            <div class="autocomplete-list" id="autocomplete1"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="score1">Score</label>
+                            <input type="number" id="score1" name="score1" required min="0" placeholder="0">
+                        </div>
+                    </div>
+
+                    <div class="vs-divider">VS</div>
+
+                    <div class="player-section">
+                        <h3>Player 2</h3>
+                        <div class="form-group">
+                            <label for="player2">Player</label>
+                            <select id="player2" name="player2" required>
+                                <option value="">Select a player</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="team2">Team</label>
+                            <input type="text" id="team2" name="team2" required placeholder="Type team name..." autocomplete="off">
+                            <div class="autocomplete-list" id="autocomplete2"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="score2">Score</label>
+                            <input type="number" id="score2" name="score2" required min="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="penalty-section">
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="penaltyCheck" name="penaltyCheck">
+                            <span>Ended with penalty shootout</span>
+                        </label>
+                    </div>
+
+                    <div id="penaltyScores" class="penalty-scores hidden">
+                        <div class="form-group">
+                            <label for="penScore1">Penalties Player 1</label>
+                            <input type="number" id="penScore1" name="penScore1" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="penScore2">Penalties Player 2</label>
+                            <input type="number" id="penScore2" name="penScore2" min="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <span class="btn-text">Save Match</span>
+                    <span class="btn-loading">⏳ Saving...</span>
+                </button>
+            </form>
+
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/add-match.js') }}"></script>
+</body>
+</html>
