@@ -16,11 +16,45 @@ async function loadData() {
         teams = await teamsResponse.json();
         players = await playersResponse.json();
         
-        displayPlayerCards();
+        // Check for prefilled data from randomizer
+        const prefilledData = sessionStorage.getItem('prefilledMatch');
+        if (prefilledData) {
+            loadPrefilledMatch(JSON.parse(prefilledData));
+        } else {
+            displayPlayerCards();
+        }
     } catch (error) {
         console.error('Error:', error);
         showMessage('❌ Error loading data', 'error');
     }
+}
+
+// Load prefilled match from randomizer
+function loadPrefilledMatch(data) {
+    // Find players
+    selectedPlayers.player1 = players.find(p => p.id === parseInt(data.player1Id));
+    selectedPlayers.player2 = players.find(p => p.id === parseInt(data.player2Id));
+    
+    if (selectedPlayers.player1 && selectedPlayers.player2) {
+        selectedTeams.team1 = data.team1;
+        selectedTeams.team2 = data.team2;
+        
+        // Show match details directly
+        displayPlayerCards();
+        updatePlayerSelection();
+        showMatchDetails();
+        
+        // Pre-select teams
+        document.getElementById('selectedTeam1').textContent = data.team1;
+        document.getElementById('selectedTeam1').classList.add('selected');
+        document.getElementById('selectedTeam2').textContent = data.team2;
+        document.getElementById('selectedTeam2').classList.add('selected');
+        
+        showMessage('✨ Teams loaded from randomizer', 'success');
+    }
+    
+    // Clear session storage
+    sessionStorage.removeItem('prefilledMatch');
 }
 
 // Display player cards

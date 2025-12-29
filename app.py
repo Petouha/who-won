@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from models import db, Game, Player
+import csv
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fifa.db'
@@ -9,9 +10,42 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 db.init_app(app)
 
-# Créer les tables au démarrage
+# Cache en mémoire pour les team ratings
+_team_ratings_cache = None
+
+def load_team_ratings():
+    """Charge les ratings des équipes depuis le CSV (avec cache)"""
+    global _team_ratings_cache
+    
+    if _team_ratings_cache is not None:
+        return _team_ratings_cache
+    
+    teams = []
+    try:
+        with open('team_ratings.csv', 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                teams.append({
+                    'id': row['id'],
+                    'name': row['name'],
+                    'league': row['league'],
+                    'overall': int(row['overall']),
+                    'attack': int(row['attack']),
+                    'midfield': int(row['midfield']),
+                    'defence': int(row['defence'])
+                })
+        _team_ratings_cache = teams
+        print(f"✅ Team ratings loaded in cache: {len(teams)} teams")
+    except Exception as e:
+        print(f"❌ Error loading team ratings: {e}")
+        return []
+    
+    return teams
+
+# Créer les tables et charger le cache au démarrage
 with app.app_context():
     db.create_all()
+    load_team_ratings()  # Précharger le cache
 
 @app.route('/')
 def home():
@@ -36,6 +70,10 @@ def history_page():
 @app.route('/leaderboard-page')
 def leaderboard_page():
     return render_template('leaderboard.html')
+
+@app.route('/randomize-teams-page')
+def randomize_teams_page():
+    return render_template('randomize-teams.html')
 
 @app.route('/api/teams', methods=['GET'])
 def get_teams():
@@ -70,6 +108,64 @@ def get_favorite_teams(player_id):
         favorite_teams = [team for team, count in sorted_teams[:5]]
         
         return jsonify(favorite_teams)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/team-ratings', methods=['GET'])
+def get_team_ratings():
+    """Retourne toutes les équipes avec leurs ratings (depuis le cache)"""
+    teams = load_team_ratings()
+    if not teams:
+        return jsonify({"error": "Failed to load team ratings"}), 500
+    return jsonify(teams)
+
+@app.route('/api/randomize-teams', methods=['POST'])
+def randomize_teams():
+    """Randomise deux équipes selon les critères (depuis le cache)"""
+    import random
+    
+    data = request.get_json()
+    min_rating = data.get('min_rating', 70)
+    max_rating = data.get('max_rating', 90)
+    excluded_teams = data.get('excluded_teams', [])
+    
+    try:
+        # Utiliser le cache au lieu de relire le CSV
+        all_teams = load_team_ratings()
+        
+        # Filtrer selon les critères
+        teams = [
+            team for team in all_teams
+            if team['name'] not in excluded_teams 
+            and min_rating <= team['overall'] <= max_rating
+        ]
+        
+        if len(teams) < 2:
+            return jsonify({"error": "Pas assez d'équipes disponibles avec ces critères"}), 400
+        
+        # Sélectionner la première équipe
+        team1 = random.choice(teams)
+        
+        # Trouver des équipes avec un rating similaire (±2)
+        team1_rating = team1['overall']
+        balanced_teams = [t for t in teams if t['name'] != team1['name'] 
+                         and abs(t['overall'] - team1_rating) <= 2]
+        
+        # Si pas assez d'équipes équilibrées, élargir la recherche
+        if not balanced_teams:
+            balanced_teams = [t for t in teams if t['name'] != team1['name']]
+        
+        team2 = random.choice(balanced_teams) if balanced_teams else None
+        
+        if not team2:
+            return jsonify({"error": "Impossible de trouver un matchup équilibré"}), 400
+        
+        return jsonify({
+            'team1': team1,
+            'team2': team2,
+            'rating_difference': abs(team1['overall'] - team2['overall'])
+        })
+        
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

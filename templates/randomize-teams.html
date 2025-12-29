@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomize Teams - FIFA Match Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="back-button" onclick="goBack()">← Back</div>
+        
+        <header class="page-header">
+            <h1>🎲 Randomize Teams</h1>
+        </header>
+
+        <div class="match-form-alt">
+            <!-- Player Selection -->
+            <div class="step-section" id="playerSelection">
+                <h2 class="step-title">Select Players</h2>
+                <div class="player-cards-grid" id="playerCardsGrid"></div>
+            </div>
+
+            <!-- Configuration -->
+            <div class="step-section hidden" id="configSection">
+                <h2 class="step-title">Configuration</h2>
+                
+                <!-- Rating Range -->
+                <div class="config-group">
+                    <h3>Rating Range</h3>
+                    <div class="rating-range-inputs">
+                        <div class="range-input">
+                            <label for="minRating">Minimum</label>
+                            <input type="number" id="minRating" value="75" min="60" max="90">
+                        </div>
+                        <span class="range-separator">→</span>
+                        <div class="range-input">
+                            <label for="maxRating">Maximum</label>
+                            <input type="number" id="maxRating" value="85" min="60" max="90">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Excluded Teams -->
+                <div class="config-group">
+                    <h3>Excluded Teams</h3>
+                    <div class="team-search-container">
+                        <input type="text" id="teamSearch" placeholder="Search team to exclude..." autocomplete="off">
+                        <div class="team-dropdown" id="teamSuggestions"></div>
+                    </div>
+                    <div id="excludedTeamsContainer" class="tags-container"></div>
+                </div>
+
+                <button class="btn btn-primary btn-randomize" onclick="randomizeTeams(event)">
+                    <span class="btn-text">🎲 Randomize Teams</span>
+                    <span class="btn-loading">⏳ Randomizing...</span>
+                </button>
+            </div>
+
+            <!-- Match Result -->
+            <div class="step-section hidden" id="matchupResult">
+                <h2 class="step-title">Match Result</h2>
+                
+                <div class="match-setup">
+                    <!-- Team 1 -->
+                    <div class="player-side">
+                        <div class="player-badge" id="player1Badge"></div>
+                        
+                        <div class="team-result-card">
+                            <div class="team-result-name" id="team1Name"></div>
+                            <div class="team-result-league" id="team1League"></div>
+                            <div class="team-rating">
+                                <span class="rating-badge-large" id="team1Overall"></span>
+                            </div>
+                            <div class="team-stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-label">ATT</span>
+                                    <span class="stat-value" id="team1Attack"></span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">MID</span>
+                                    <span class="stat-value" id="team1Midfield"></span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">DEF</span>
+                                    <span class="stat-value" id="team1Defence"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vs-separator">VS</div>
+
+                    <!-- Team 2 -->
+                    <div class="player-side">
+                        <div class="player-badge" id="player2Badge"></div>
+                        
+                        <div class="team-result-card">
+                            <div class="team-result-name" id="team2Name"></div>
+                            <div class="team-result-league" id="team2League"></div>
+                            <div class="team-rating">
+                                <span class="rating-badge-large" id="team2Overall"></span>
+                            </div>
+                            <div class="team-stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-label">ATT</span>
+                                    <span class="stat-value" id="team2Attack"></span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">MID</span>
+                                    <span class="stat-value" id="team2Midfield"></span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">DEF</span>
+                                    <span class="stat-value" id="team2Defence"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rating-difference-display">
+                    Rating Difference: <strong id="ratingDiff"></strong>
+                </div>
+
+                <div class="action-buttons-row">
+                    <button class="btn btn-primary" onclick="reRandomize()">🔄 Re-Randomize</button>
+                    <button class="btn btn-success" onclick="acceptMatchup()">✓ Accept & Add Match</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/randomize-teams.js') }}"></script>
+</body>
+</html>

@@ -28,9 +28,46 @@ async function loadData() {
             option2.textContent = player.name;
             player2Select.appendChild(option2);
         });
+        
+        // Charger les données pré-remplies si elles existent
+        loadPrefilledData();
     } catch (error) {
         console.error('Error:', error);
         showMessage('❌ Error loading data', 'error');
+    }
+}
+
+// Charger les données pré-remplies depuis le randomizer
+function loadPrefilledData() {
+    const prefilledData = sessionStorage.getItem('prefilledMatch');
+    if (!prefilledData) return;
+    
+    try {
+        const data = JSON.parse(prefilledData);
+        
+        // Remplir les joueurs
+        if (data.player1Id) {
+            document.getElementById('player1').value = data.player1Id;
+        }
+        if (data.player2Id) {
+            document.getElementById('player2').value = data.player2Id;
+        }
+        
+        // Remplir les équipes
+        if (data.team1) {
+            document.getElementById('team1').value = data.team1;
+        }
+        if (data.team2) {
+            document.getElementById('team2').value = data.team2;
+        }
+        
+        // Nettoyer le sessionStorage
+        sessionStorage.removeItem('prefilledMatch');
+        
+        // Afficher un message
+        showMessage('✨ Teams loaded from randomizer', 'success');
+    } catch (error) {
+        console.error('Error loading prefilled data:', error);
     }
 }
 

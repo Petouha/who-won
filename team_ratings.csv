@@ -1,0 +1,689 @@
+id,name,league,overall,attack,midfield,defence
+10,Manchester City,Premier League,85,86,83,79
+1335,France,UEFA,85,86,83,85
+243,Real Madrid,La Liga,85,88,86,81
+9,Liverpool,Premier League,84,82,83,85
+21,FC Bayern München,Bundesliga,84,90,84,82
+1318,England,UEFA,84,84,84,80
+44,Inter,Serie A,84,86,84,83
+1337,Germany,UEFA,84,81,84,84
+1362,Spain,UEFA,84,84,84,82
+241,FC Barcelona,La Liga,84,85,85,83
+1,Arsenal,Premier League,83,83,85,81
+32,Bayer 04 Leverkusen,Bundesliga,83,83,84,83
+73,Paris Saint-Germain,Ligue 1,83,83,83,84
+1354,Portugal,UEFA,83,83,84,82
+105035,Netherlands,UEFA,83,83,83,82
+1369,Argentina,CONMEBOL,83,87,84,81
+1343,Italy,UEFA,82,79,83,82
+240,Atlético Madrid,La Liga,82,84,80,81
+2,Aston Villa,Premier League,81,84,80,80
+13,Newcastle United,Premier League,81,81,80,80
+18,Tottenham Hotspur,Premier League,81,80,83,81
+22,Borussia Dortmund,Bundesliga,81,82,79,81
+47,AC Milan,Serie A,81,79,82,78
+5,Chelsea,Premier League,80,81,82,80
+11,Manchester United,Premier League,80,77,78,80
+39,Atalanta,Serie A,80,80,80,79
+112172,RB Leipzig,Bundesliga,80,82,79,80
+45,Juventus,Serie A,80,82,80,78
+326,Fenerbahçe SK,Süper Lig,80,81,80,78
+111111,Morocco,CAF,79,81,77,81
+46,Lazio,Serie A,79,80,79,78
+48,Napoli,Serie A,79,79,80,79
+1328,Croatia,UEFA,79,80,80,78
+52,Roma,Serie A,79,78,79,79
+325,Galatasaray SK,Süper Lig,79,85,78,77
+448,Athletic Club,La Liga,79,75,80,78
+234,SL Benfica,Primeira Liga,79,79,79,78
+237,Sporting CP,Primeira Liga,79,86,79,78
+1799,Crystal Palace,Premier League,78,77,78,78
+14,Nottingham Forest,Premier League,78,81,78,79
+1808,Brighton & Hove Albion,Premier League,78,78,77,77
+19,West Ham United,Premier League,78,80,78,77
+1331,Denmark,UEFA,78,76,79,77
+449,Real Betis Balompié,La Liga,78,79,77,77
+457,Real Sociedad,La Liga,78,79,79,76
+219,Olympique de Marseille,Ligue 1,78,76,79,77
+483,Villarreal CF,La Liga,78,79,79,77
+110062,Girona FC,La Liga,78,75,78,79
+247,PSV,Eredivisie,78,78,79,75
+1824,Eintracht Frankfurt,Bundesliga,77,77,77,79
+36,VfB Stuttgart,Bundesliga,77,77,77,75
+110374,Fiorentina,Serie A,77,79,77,75
+65,Lille OSC,Ligue 1,77,79,76,77
+66,Olympique Lyonnais,Ligue 1,77,78,77,76
+69,AS Monaco,Ligue 1,77,77,78,77
+72,OGC Nice,Ligue 1,77,76,77,74
+1352,Norway,UEFA,77,79,79,74
+1353,Poland,UEFA,77,79,75,75
+1363,Sweden,UEFA,77,86,76,77
+1876,River Plate,Liga Profesional de Fútbol,77,76,75,77
+1366,Ukraine,UEFA,77,83,76,76
+605,Al Hilal,Pro League,77,80,79,76
+1387,United States,CONCACAF,77,78,77,76
+1925,Brentford,Premier League,77,80,76,76
+144,Fulham FC,Premier League,77,77,77,78
+1943,AFC Bournemouth,Premier League,77,80,77,77
+175,VfL Wolfsburg,Bundesliga,77,78,76,76
+461,Valencia CF,La Liga,77,76,76,76
+479,CA Osasuna,La Liga,77,78,76,76
+480,Rayo Vallecano,La Liga,77,73,78,76
+7,Everton,Premier League,76,75,76,75
+112139,Al Nassr,Pro League,76,78,77,73
+1043,Flamengo,Série A,76,77,76,75
+23,Borussia Mönchengladbach,Bundesliga,76,79,76,74
+280,Olympiacos FC,Super League,76,79,74,76
+25,SC Freiburg,Bundesliga,76,74,76,78
+1330,Czechia,UEFA,76,77,76,75
+54,Torino,Serie A,76,76,76,75
+327,Beşiktaş JK,Süper Lig,76,82,76,75
+74,Stade Rennais FC,Ligue 1,76,76,73,75
+1359,Scotland,UEFA,76,77,76,75
+111462,Ghana,CAF,76,76,78,74
+1386,Mexico,CONCACAF,76,77,76,74
+110,Wolverhampton Wanderers,Premier League,76,76,77,75
+378,Stade Brestois 29,Ligue 1,76,75,76,75
+189,Bologna,Serie A,76,75,77,76
+450,RC Celta,La Liga,76,77,76,75
+453,RCD Mallorca,La Liga,76,77,76,77
+481,Sevilla FC,La Liga,76,74,75,76
+236,FC Porto,Primeira Liga,76,75,76,74
+245,Ajax,Eredivisie,76,76,77,74
+246,Feyenoord,Eredivisie,76,74,74,75
+112387,Al Ahli SFC,Pro League,75,77,76,71
+517,Botafogo,Série A,75,71,75,75
+1035,Atlético Mineiro,Série A,75,77,75,76
+278,AEK Athens,Super League,75,75,75,74
+38,SV Werder Bremen,Bundesliga,75,75,75,74
+1831,1. FC Union Berlin,Bundesliga,75,72,74,75
+10029,TSG 1899 Hoffenheim,Bundesliga,75,75,75,74
+64,RC Lens,Ligue 1,75,74,75,75
+1860,Getafe CF,La Liga,75,73,75,75
+78,Celtic,Premiership,75,76,76,75
+94,Ipswich Town,Premier League,75,77,74,75
+95,Leicester City,Premier League,75,76,75,73
+383,Palmeiras,Série A,75,78,76,74
+169,1. FSV Mainz 05,Bundesliga,75,80,76,74
+436,Trabzonspor,Süper Lig,75,77,75,73
+472,UD Las Palmas,La Liga,75,75,75,73
+1796,Burnley,Championship,74,72,74,74
+8,Leeds United,Championship,74,75,75,75
+266,SK Slavia Praha,První liga,74,73,75,74
+267,Sparta Praha,První liga,74,75,73,73
+17,Southampton,Premier League,74,73,73,73
+1048,Internacional,Série A,74,71,74,75
+100888,CD Leganés,La Liga,74,73,74,73
+100409,FC Augsburg,Bundesliga,74,74,74,75
+71,FC Nantes,Ligue 1,74,74,73,73
+1355,Republic of Ireland,UEFA,74,73,74,73
+76,RC Strasbourg Alsace,Ligue 1,74,76,75,73
+1877,Boca Juniors,Liga Profesional de Fútbol,74,74,72,74
+86,Rangers FC,Premiership,74,73,74,73
+1884,Panathinaikos FC,Super League,74,75,74,73
+1886,Hungary,UEFA,74,74,74,73
+607,Al Ittihad,Pro League,74,77,78,69
+1896,Sporting Clube de Braga,Primeira Liga,74,75,75,73
+393,PAOK,Super League,74,74,74,73
+452,RCD Espanyol,La Liga,74,75,73,74
+463,Deportivo Alavés,La Liga,74,74,75,73
+1745,Como,Serie A,74,75,75,74
+101085,Racing Club,Liga Profesional de Fútbol,74,73,73,73
+231,Club Brugge KV,Pro League,74,74,75,74
+1794,Sheffield United,Championship,73,71,72,72
+1041,Corinthians,Série A,73,75,72,74
+1809,Toulouse FC,Ligue 1,73,73,73,74
+112670,Talleres,Liga Profesional de Fútbol,73,71,72,71
+50,Parma,Serie A,73,69,74,69
+1842,Cagliari,Serie A,73,74,72,73
+55,Udinese,Serie A,73,75,73,73
+57,AJ Auxerre,Ligue 1,73,71,74,73
+1861,UD Almería,La Liga 2,73,76,73,71
+70,Montpellier HSC,Ligue 1,73,69,75,70
+598,São Paulo,Série A,73,73,72,73
+1367,Wales,UEFA,73,72,73,74
+347,Lecce,Serie A,73,74,70,73
+379,Stade de Reims,Ligue 1,73,72,73,72
+110468,Viktoria Plzeň,První liga,73,72,73,72
+111811,Monza,Serie A,73,75,73,71
+206,Hellas Verona FC,Serie A,73,72,73,72
+101083,Estudiantes de La Plata,Liga Profesional de Fútbol,73,74,74,71
+110556,Genoa,Serie A,73,75,71,73
+229,RSC Anderlecht,Pro League,73,77,74,71
+112893,Inter Miami,Major League Soccer,73,84,72,70
+12,Middlesbrough,Championship,72,71,73,71
+31,1. FC Köln,2. Bundesliga,72,70,72,72
+819,FC København,Superliga,72,69,71,71
+1843,Palermo FC,Serie B,72,73,71,71
+567,Fluminense,Série A,72,74,72,72
+568,Cruzeiro,Série A,72,71,72,73
+110395,Lanús,Liga Profesional de Fútbol,72,72,72,70
+1598,Bahia,Série A,72,74,73,70
+1356,Romania,UEFA,72,71,73,71
+1874,Ferencvárosi Torna Club,Nemzeti Bajnokság I,72,73,72,71
+1629,Grêmio,Série A,72,72,71,72
+111974,Sassuolo,Serie B,72,77,70,70
+106,Sunderland,Championship,72,69,72,72
+1908,FC Twente,Eredivisie,72,72,73,71
+1923,Luton Town,Championship,72,70,69,70
+111235,1. FC Heidenheim 1846,Bundesliga,72,73,72,72
+101014,Medipol Başakşehir FK,Süper Lig,72,71,72,72
+160,VfL Bochum 1848,Bundesliga,72,73,73,72
+673,KRC Genk,Pro League,72,72,72,74
+101047,Dynamo Kyiv,Premier League,72,72,74,72
+101059,Shakhtar Donetsk,Premier League,72,70,74,73
+1738,Le Havre AC,Ligue 1,72,72,71,72
+462,Real Valladolid CF,La Liga,72,71,72,71
+1746,Empoli,Serie A,72,73,71,71
+101088,Vélez Sarsfield,Liga Profesional de Fútbol,72,73,70,71
+110329,FC St. Pauli,Bundesliga,72,71,72,72
+1800,Coventry City,Championship,71,70,72,70
+110093,Independiente,Liga Profesional de Fútbol,71,69,71,70
+1819,AS Saint-Étienne,Ligue 1,71,73,70,70
+28,Hamburger SV,2. Bundesliga,71,73,71,70
+111144,Seattle Sounders FC,Major League Soccer,71,73,68,71
+1837,Sampdoria,Serie B,71,73,70,68
+1334,Finland,UEFA,71,71,73,67
+111674,Al Shabab,Pro League,71,73,70,70
+110396,Newell's Old Boys,Liga Profesional de Fútbol,71,72,69,69
+1341,Iceland,UEFA,71,76,70,69
+111434,Cremonese,Serie B,71,70,71,69
+111701,Al Ain,Pro League,71,78,70,70
+1887,Vitória SC,Primeira Liga,71,71,72,71
+112996,Los Angeles FC,Major League Soccer,71,74,69,70
+109,West Bromwich Albion,Championship,71,72,71,70
+1903,FC Utrecht,Eredivisie,71,73,69,71
+1906,AZ Alkmaar,Eredivisie,71,70,72,71
+110980,Colo-Colo,Primera Division,71,70,72,71
+1952,Hull City,Championship,71,71,69,70
+674,KAA Gent,Pro League,71,70,71,72
+111019,Argentinos Juniors,Liga Profesional de Fútbol,71,70,72,70
+111022,Belgrano de Córdoba,Liga Profesional de Fútbol,71,74,70,68
+1968,Cádiz CF,La Liga 2,71,71,71,70
+697,LA Galaxy,Major League Soccer,71,70,71,69
+191,FC Red Bull Salzburg,Bundesliga,71,69,72,66
+111052,Fortaleza,Série A,71,71,71,71
+205,Venezia,Serie A,71,71,72,69
+211,Dinamo Zagreb,Hrvatska nogometna liga,71,69,71,70
+217,FC Lorient,Ligue 2,71,71,70,71
+111325,Club Nacional de Football,Primera División,71,73,71,71
+2014,Union Saint-Gilloise,Pro League,71,71,71,74
+230,Royal Antwerp FC,Pro League,71,77,70,69
+110827,Real Oviedo,La Liga 2,71,72,71,70
+111339,Kasımpaşa SK,Süper Lig,71,73,71,70
+101100,Atlético Nacional,Categoría Primera A,71,72,71,71
+110832,Granada CF,La Liga 2,71,73,71,69
+110580,Rosario Central,Liga Profesional de Fútbol,71,72,70,71
+101110,Peñarol,Primera División,71,72,71,71
+1530,Angers SCO,Ligue 1,71,71,72,69
+1792,Norwich City,Championship,70,73,69,70
+110081,Northern Ireland,UEFA,70,67,70,71
+3,Blackburn Rovers,Championship,70,69,70,70
+1795,Watford,Championship,70,59,70,68
+112391,Al Qadsiah FC,Pro League,70,80,70,67
+1801,Preston North End,Championship,70,70,70,70
+112393,Al Taawoun FC,Pro League,70,72,73,66
+269,Brøndby IF,Superliga,70,70,71,69
+15,Queens Park Rangers,Championship,70,70,71,68
+1807,Sheffield Wednesday,Championship,70,69,70,68
+10020,GD Estoril Praia,Primeira Liga,70,69,70,68
+100135,APOEL FC,1. Division,70,70,70,69
+110636,Fortuna Düsseldorf,2. Bundesliga,70,70,70,70
+569,Vasco da Gama,Série A,70,70,69,70
+1853,Levante UD,La Liga 2,70,70,71,67
+320,Malmö FF,Allsvenskan,70,71,69,70
+576,Holstein Kiel,Bundesliga,70,71,70,69
+68,FC Metz,Ligue 2,70,73,69,69
+112716,Cerro Porteño,División Profesional,70,69,69,68
+88,Birmingham City,League One,70,69,70,71
+111706,Godoy Cruz,Liga Profesional de Fútbol,70,67,69,70
+111710,Defensa y Justicia,Liga Profesional de Fútbol,70,69,70,69
+111711,Huracán,Liga Profesional de Fútbol,70,69,68,69
+97,Millwall FC,Championship,70,65,69,70
+131174,Eyüpspor,Süper Lig,70,74,70,69
+113018,St. Louis CITY SC,Major League Soccer,70,73,69,68
+1919,Bristol City,Championship,70,70,69,70
+896,FC Basel 1893,Super League,70,69,70,70
+112513,FC Arouca,Primeira Liga,70,69,70,68
+900,BSC Young Boys,Super League,70,70,70,69
+110986,LDU Quito,Serie A,70,70,69,68
+110741,Spezia,Serie B,70,69,70,69
+111010,Alianza Lima,Liga 1,70,71,68,70
+111013,Sporting Cristal,Liga 1,70,70,69,69
+166,Hertha BSC,2. Bundesliga,70,71,70,70
+110502,SV Darmstadt 98,2. Bundesliga,70,70,70,68
+111014,Universitario de Deportes,Liga 1,70,71,70,70
+1961,Cardiff City,Championship,70,67,71,70
+101037,Çaykur Rizespor,Süper Lig,70,71,70,69
+15029,Universidad de Chile,Primera Division,70,71,71,69
+111817,Paris FC,Ligue 2,70,69,71,70
+459,Real Sporting de Gijón,La Liga 2,70,71,69,69
+114640,Charlotte FC,Major League Soccer,70,73,70,68
+468,Elche CF,La Liga 2,70,70,70,70
+101084,Gimnasia y Esgrima La Plata,Liga Profesional de Fútbol,70,70,68,71
+485,Hannover 96,2. Bundesliga,70,69,70,70
+101099,América de Cali,Categoría Primera A,70,70,71,69
+748,Samsunspor,Süper Lig,70,71,70,70
+1516,FC Midtjylland,Superliga,70,71,69,70
+242,RC Deportivo de La Coruña,La Liga 2,70,67,71,69
+101108,Club Olimpia,División Profesional,70,71,67,70
+1013,San Lorenzo de Almagro,Liga Profesional de Fútbol,70,69,72,68
+112885,Atlanta United,Major League Soccer,70,67,73,69
+113149,FC Cincinnati,Major League Soccer,70,71,71,69
+263,Hajduk Split,Hrvatska nogometna liga,69,67,70,69
+112908,Independiente del Valle,Serie A,69,70,69,69
+1806,Stoke City,Championship,69,67,70,68
+271,Aarhus Gymnastikforening,Superliga,69,70,69,70
+29,1. FC Kaiserslautern,2. Bundesliga,69,73,68,69
+34,FC Schalke 04,2. Bundesliga,69,71,69,68
+111140,Portland Timbers,Major League Soccer,69,71,69,68
+110373,US Salernitana 1919,Serie B,69,67,67,67
+1832,Karlsruher SC,2. Bundesliga,69,69,70,69
+10032,FC Lugano,Super League,69,66,70,69
+112689,Platense,Liga Profesional de Fútbol,69,71,69,65
+111928,San Jose Earthquakes,Major League Soccer,69,74,70,67
+324,Servette FC,Super League,69,67,70,68
+580,SV Elversberg,2. Bundesliga,69,70,69,68
+112965,Central Cordoba SdE,Liga Profesional de Fútbol,69,66,69,65
+1862,FC Lausanne-Sport,Super League,69,69,68,68
+114510,Casa Pia,Primeira Liga,69,68,68,70
+80,Hearts,Premiership,69,69,69,67
+91,Derby County,Championship,69,68,67,69
+111708,Atlético Tucumán,Liga Profesional de Fútbol,69,70,67,69
+10846,Burgos CF,La Liga 2,69,70,69,70
+1888,Gil Vicente FC,Primeira Liga,69,69,68,69
+111716,Club Atlético Unión,Liga Profesional de Fútbol,69,69,69,70
+873,Lech Poznań,Ekstraklasa,69,71,69,68
+110953,Instituto Atlético Central Córdoba,Liga Profesional de Fútbol,69,71,69,68
+1898,Boavista FC,Primeira Liga,69,70,70,67
+1900,Moreirense FC,Primeira Liga,69,69,69,68
+111473,New Zealand,OFC,69,70,70,68
+1910,NEC Nijmegen,Eredivisie,69,69,68,70
+898,FC St. Gallen 1879,Super League,69,69,69,68
+110724,KV Mechelen,Pro League,69,70,70,68
+110981,Barcelona de Guayaquil,Serie A,69,70,69,68
+131463,AVS Futebol SAD,Primeira Liga,69,69,68,69
+110738,Pisa,Serie B,69,69,69,68
+113044,Barracas Central,Liga Profesional de Fútbol,69,71,68,67
+918,FK Bodø/Glimt,Eliteserien,69,68,72,69
+100761,FCSB,Liga I,69,68,69,69
+670,Royal Charleroi Sporting Club,Pro League,69,67,70,69
+1438,Santa Clara,Primeira Liga,69,71,68,69
+111008,Libertad,División Profesional,69,69,69,70
+680,Sint-Truidense VV,Pro League,69,68,71,67
+1960,Swansea City,Championship,69,68,70,69
+681,KVC Westerlo,Pro League,69,71,69,69
+112809,Famalicão,Primeira Liga,69,68,70,69
+687,Columbus Crew,Major League Soccer,69,64,70,69
+689,New York Red Bulls,Major League Soccer,69,74,68,65
+101041,Sivasspor,Süper Lig,69,72,69,66
+691,New England Revolution,Major League Soccer,69,72,71,66
+1719,Vitória,Série A,69,69,69,70
+110776,Gaziantep FK,Süper Lig,69,72,70,67
+698,Houston Dynamo,Major League Soccer,69,75,69,66
+711,BK Häcken,Allsvenskan,69,66,70,66
+456,Racing Santander,La Liga 2,69,68,69,68
+1744,Modena,Serie B,69,71,69,69
+209,SK Sturm Graz,Bundesliga,69,66,70,68
+467,SD Eibar,La Liga 2,69,70,70,68
+112606,Orlando City SC,Major League Soccer,69,71,69,65
+112096,Al Ettifaq,Pro League,69,77,70,66
+113888,Qarabağ FK,Premyer Liqa,69,66,69,68
+232,Standard de Liège,Pro League,69,70,66,69
+744,Rio Ave FC,Primeira Liga,69,74,69,71
+489,Farense,Primeira Liga,69,70,69,68
+114161,Austin FC,Major League Soccer,69,72,67,66
+114162,Nashville SC,Major League Soccer,69,71,69,68
+244,Real Zaragoza,La Liga 2,69,69,70,69
+100087,Oud-Heverlee Leuven,Pro League,69,67,70,68
+101112,Vancouver Whitecaps FC,Major League Soccer,69,72,69,67
+252,LASK Linz,Bundesliga,69,72,69,69
+110588,1. FC Magdeburg,2. Bundesliga,69,70,68,69
+254,SK Rapid,Bundesliga,69,69,69,70
+1790,Portsmouth,Championship,69,71,69,68
+256,FK Austria Wien,Bundesliga,68,69,69,68
+260,CD Tenerife,La Liga 2,68,69,68,68
+112134,Philadelphia Union,Major League Soccer,68,72,67,65
+100632,Go Ahead Eagles,Eredivisie,68,65,69,70
+111138,Minnesota United FC,Major League Soccer,68,67,71,67
+111651,Toronto FC,Major League Soccer,68,67,70,66
+131110,CD Eldense,La Liga 2,68,66,68,67
+100646,Sparta Rotterdam,Eredivisie,68,72,68,69
+111657,Frosinone,Serie B,68,63,67,66
+10030,SC Paderborn 07,2. Bundesliga,68,68,69,68
+1848,SSC Bari,Serie B,68,70,69,67
+131388,Bodrumspor,Süper Lig,68,68,67,67
+110908,Catanzaro,Serie B,68,69,67,66
+573,Málaga CF,La Liga 2,68,67,68,68
+110915,Cesena FC,Serie B,68,69,67,68
+112713,Club Atlético Sarmiento,Liga Profesional de Fútbol,68,68,67,68
+77,Aberdeen,Premiership,68,70,67,66
+1871,Legia Warszawa,Ekstraklasa,68,69,68,68
+112992,Atlético Bucaramanga,Categoría Primera A,68,68,68,68
+1891,CD Nacional,Primeira Liga,68,71,68,69
+111715,Tigre,Liga Profesional de Fútbol,68,67,67,69
+111724,Shandong Taishan,Super League,68,74,66,66
+634,Fortuna Sittard,Eredivisie,68,70,69,68
+110975,Universidad Católica,Primera Division,68,71,67,69
+110977,Unión Española,Primera Division,68,67,67,67
+1929,Plymouth Argyle,Championship,68,68,68,68
+113037,Al Riyadh,Pro League,68,65,68,64
+114326,Raków Częstochowa,Ekstraklasa,68,68,68,69
+110745,Jagiellonia Białystok,Ekstraklasa,68,70,68,69
+112540,Shanghai Port,Super League,68,73,68,66
+1951,Oxford United,Championship,68,68,68,68
+417,Molde FK,Eliteserien,68,71,66,67
+101026,Göztepe SK,Süper Lig,68,71,66,67
+165,SpVgg Greuther Fürth,2. Bundesliga,68,67,69,68
+101033,Konyaspor,Süper Lig,68,68,67,69
+171,1. FC Nürnberg,2. Bundesliga,68,68,69,67
+111020,Independiente Rivadavia,Liga Profesional de Fútbol,68,68,64,67
+433,AIK,Allsvenskan,68,67,68,68
+693,Chicago Fire,Major League Soccer,68,75,65,66
+695,FC Dallas,Major League Soccer,68,76,68,66
+696,Sporting Kansas City,Major League Soccer,68,71,66,66
+1473,Ulsan HD FC,K League 1,68,66,69,63
+1474,Pohang Steelers,K League 1,68,67,67,66
+718,Estrela da Amadora,Primeira Liga,68,69,68,67
+980,Daejeon Citizen,K League 1,68,69,65,66
+1750,Cercle Brugge KSV,Pro League,68,67,68,66
+111065,Real Salt Lake,Major League Soccer,68,64,69,67
+741,Antalyaspor,Süper Lig,68,69,69,67
+111334,FBC Melgar,Liga 1,68,70,68,68
+100081,KV Kortrijk,Pro League,68,68,69,66
+101106,Once Caldas,Categoría Primera A,68,69,67,67
+110069,CD Mirandés,La Liga 2,68,70,68,68
+113142,Alanyaspor,Süper Lig,68,71,69,68
+110839,SD Huesca,La Liga 2,68,70,67,69
+1786,Randers FC,Superliga,68,66,68,69
+1797,Rotherham United,League One,67,67,67,67
+2055,Gimcheon Sangmu FC,K League 1,67,66,69,65
+112392,Al Raed,Pro League,67,73,67,64
+112168,Cosenza,Serie B,67,70,65,65
+298,Rosenborg BK,Eliteserien,67,66,68,66
+300,Viking FK,Eliteserien,67,66,66,65
+308,Universitatea Craiova,Liga I,67,66,68,67
+62,En Avant Guingamp,Ligue 2,67,67,68,67
+1854,Albacete Balompié,La Liga 2,67,68,67,68
+113217,Damac FC,Pro League,67,65,68,64
+322,Grasshopper Club Zürich,Super League,67,66,68,66
+110404,CA Banfield,Liga Profesional de Fútbol,67,68,66,65
+111433,Mantova,Serie B,67,67,67,65
+1867,Córdoba CF,La Liga 2,67,68,67,65
+81,Hibernian,Premiership,67,67,68,66
+110955,Shanghai Shenhua,Super League,67,69,68,65
+112494,Südtirol,Serie B,67,67,68,67
+1904,NAC Breda,Eredivisie,67,67,67,67
+110968,Bolívar,División de Fútbol Profesional,67,67,66,66
+1913,SC Heerenveen,Eredivisie,67,67,67,67
+1914,PEC Zwolle,Eredivisie,67,67,68,66
+1915,FC Groningen,Eredivisie,67,66,66,67
+894,FC Zürich,Super League,67,74,65,66
+897,FC Luzern,Super League,67,67,64,66
+116360,Chengdu Rongcheng,Super League,67,73,68,64
+1933,Wycombe Wanderers,League One,67,68,67,67
+110990,Deportivo Táchira,Primera Division,67,66,67,67
+112531,Deportes Iquique,Primera Division,67,65,68,66
+110740,Reggiana,Serie B,67,66,65,65
+114581,Universidad Católica del Ecuador,Serie A,67,66,66,66
+111768,Beijing Guoan,Super League,67,69,67,67
+101020,Kayserispor,Süper Lig,67,67,69,66
+111011,Cienciano,Liga 1,67,70,68,66
+110500,Eintracht Braunschweig,2. Bundesliga,67,68,67,67
+111527,Qatar,AFC,67,68,67,66
+1704,Yverdon Sport,Super League,67,65,67,66
+111276,USL Dunkerque,Ligue 2,67,68,66,69
+688,DC United,Major League Soccer,67,69,64,70
+110770,FC Sion,Super League,67,68,66,67
+694,Colorado Rapids,Major League Soccer,67,69,67,69
+700,IF Elfsborg,Allsvenskan,67,64,68,68
+112828,New York City FC,Major League Soccer,67,66,68,66
+190,Brescia,Serie B,67,66,67,67
+708,Hammarby Fotboll,Allsvenskan,67,65,68,67
+1477,Jeonbuk Hyundai Motors,K League 1,67,68,66,65
+710,Djurgårdens IF,Allsvenskan,67,69,64,68
+111822,Wolfsberger AC,Bundesliga,67,67,67,68
+210,Stade Malherbe Caen,Ligue 2,67,68,67,67
+982,FC Seoul,K League 1,67,65,69,67
+110816,CFR Cluj,Liga I,67,68,67,66
+111328,CD Palestino,Primera Division,67,65,68,67
+100851,FC Cartagena,La Liga 2,67,66,67,67
+112883,Al Khaleej,Pro League,67,65,71,65
+100852,CD Castellón,La Liga 2,67,67,67,66
+4,Bolton Wanderers,League One,66,67,66,66
+112390,Al Fateh,Pro League,66,72,68,63
+1805,Grenoble Foot 38,Ligue 2,66,64,68,65
+270,Silkeborg IF,Superliga,66,68,66,66
+531,SC Preußen Münster,2. Bundesliga,66,67,67,66
+111380,Almere City FC,Eredivisie,66,66,67,66
+1814,Stade Lavallois Mayenne FC,Ligue 2,66,66,66,66
+1815,Clermont Foot 63,Ligue 2,66,65,67,66
+1816,Amiens SC,Ligue 2,66,65,67,64
+537,FCV Dender EH,Pro League,66,65,65,66
+100634,Heracles Almelo,Eredivisie,66,65,66,65
+112667,Nacional Potosí,División de Fútbol Profesional,66,66,65,66
+543,SSV Jahn Regensburg,2. Bundesliga,66,66,66,65
+111139,CF Montréal,Major League Soccer,66,67,65,64
+112675,Al Orobah FC,Pro League,66,75,65,66
+294,ESTAC Troyes,Ligue 2,66,66,66,67
+115494,FC Annecy,Ligue 2,66,66,67,65
+111659,Rodez Aveyron Football,Ligue 2,66,65,67,65
+310,Rapid Bucuresti,Liga I,66,67,66,67
+58,Sporting Club Bastia,Ligue 2,66,66,66,65
+110176,SSV Ulm 1846,2. Bundesliga,66,64,66,67
+112493,Carrarese,Serie B,66,68,66,65
+1905,RKC Waalwijk,Eredivisie,66,67,64,64
+1907,Willem II,Eredivisie,66,65,67,65
+111993,Cittadella,Serie B,66,66,66,66
+1926,Blackpool FC,League One,66,65,66,66
+1932,Barnsley,League One,66,67,65,65
+110991,Carabobo FC,Primera Division,66,65,65,66
+1939,Huddersfield Town,League One,66,67,66,66
+100757,Dinamo Bucureşti,Liga I,66,66,68,65
+919,SK Brann,Eliteserien,66,67,67,65
+110746,Pogoń Szczecin,Ekstraklasa,66,72,66,66
+131739,Auckland FC,A-League Men,66,65,66,66
+1947,Wrexham,League One,66,67,68,66
+110747,Cracovia,Ekstraklasa,66,67,66,66
+111006,Sportivo Luqueño,División Profesional,66,65,66,62
+110751,Universitatea Cluj,Liga I,66,65,67,67
+113057,Al Fayha,Pro League,66,70,67,64
+110242,Racing de Ferrol,La Liga 2,66,67,66,66
+1443,Viborg FF,Superliga,66,66,66,66
+101028,Hatayspor,Süper Lig,66,70,67,66
+1478,Jeju United FC,K League 1,66,64,67,65
+2017,TSV Hartberg,Bundesliga,66,65,67,64
+111329,Guaraní,División Profesional,66,68,65,65
+112615,Racing Club de Montevideo,Primera División,66,66,65,66
+111086,Piast Gliwice,Ekstraklasa,66,64,67,67
+110321,Pau FC,Ligue 2,66,67,65,65
+503,Dynamo Dresden,3. Liga,66,66,68,65
+112124,SS Juve Stabia,Serie B,66,70,66,67
+1793,Reading FC,League One,65,63,68,64
+523,1. FC Saarbrücken,3. Liga,65,66,66,65
+115472,Deportivo Riestra,Liga Profesional de Fútbol,65,68,65,63
+112408,Al Wehda,Pro League,65,72,66,64
+27,FC Hansa Rostock,3. Liga,65,66,64,66
+33,TSV 1860 München,3. Liga,65,65,66,64
+111400,Sydney FC,A-League Men,65,68,64,65
+299,Lillestrøm SK,Eliteserien,65,64,66,65
+319,IFK Göteborg,Allsvenskan,65,66,65,64
+115536,Cerro Largo,Primera División,65,63,61,66
+82,Kilmarnock,Premiership,65,65,66,65
+89,Charlton Athletic,League One,65,66,66,65
+110178,SV Sandhausen,3. Liga,65,65,65,65
+614,AC Ajaccio,Ligue 2,65,65,65,65
+361,Stevenage,League One,65,63,65,65
+1917,Wigan Athletic,League One,65,63,64,64
+110720,Blau-Weiß Linz,Bundesliga,65,66,64,64
+111239,FC Ingolstadt 04,3. Liga,65,65,66,65
+1931,Stockport County,League One,65,65,65,64
+149,Lincoln City,League One,65,67,65,65
+131735,Al Kholood,Pro League,65,69,65,64
+15001,Lyngby Boldklub,Superliga,65,62,62,65
+110749,Zagłębie Lubin,Ekstraklasa,65,66,65,64
+159,DSC Arminia Bielefeld,3. Liga,65,66,65,65
+15009,SC Rheindorf Altach,Bundesliga,65,65,65,66
+675,K Beerschot VA,Pro League,65,63,67,65
+111779,Henan FC,Super League,65,68,65,64
+420,Górnik Zabrze,Ekstraklasa,65,64,64,66
+113060,Al Akhdoud Saudi Club,Pro League,65,64,68,62
+1958,Leyton Orient,League One,65,67,65,65
+114598,Atlético Grau,Liga 1,65,64,67,65
+111273,Red Star FC,Ligue 2,65,65,65,65
+110765,Incheon United FC,K League 1,65,69,66,59
+112558,Suwon FC,K League 1,65,65,65,63
+1713,FC Winterthur,Super League,65,61,66,64
+114611,Academia Puerto Cabello,Primera Division,65,64,64,64
+181,Dundee United FC,Premiership,65,64,64,65
+114615,Mushuc Runa,Serie A,65,62,65,66
+702,IFK Norrköping,Allsvenskan,65,67,66,63
+15040,WSG Tirol,Bundesliga,65,63,65,66
+112072,Mjällby AIF,Allsvenskan,65,65,67,65
+113378,Sepsi OSK,Liga I,65,65,66,65
+112868,Boston River,Primera División,65,62,66,65
+487,VfL Osnabrück,3. Liga,65,64,64,65
+492,SV Wehen Wiesbaden,3. Liga,65,65,65,66
+111088,Radomiak Radom,Ekstraklasa,65,64,66,65
+112115,Gangwon FC,K League 1,65,65,63,67
+111092,Śląsk Wrocław,Ekstraklasa,65,64,66,64
+1787,SK Austria Klagenfurt,Bundesliga,65,64,65,66
+1788,FC Nordsjælland,Superliga,65,67,64,65
+2056,Daegu FC,K League 1,64,64,63,63
+526,Rot-Weiss Essen,3. Liga,64,66,64,65
+1826,Alemannia Aachen,3. Liga,64,64,64,64
+112163,Zhejiang FC,Super League,64,63,66,62
+111397,Melbourne Victory,A-League Men,64,66,65,62
+111399,Perth Glory,A-League Men,64,65,61,65
+112427,Western Sydney Wanderers,A-League Men,64,64,66,62
+301,Widzew Łódź,Ekstraklasa,64,63,64,64
+113458,IK Sirius,Allsvenskan,64,63,64,64
+820,Aalborg BK,Superliga,64,62,61,64
+110645,Viktoria Köln,3. Liga,64,65,63,64
+822,Vejle Boldklub,Superliga,64,64,64,63
+112199,Sarpsborg 08 FF,Eliteserien,64,64,64,64
+83,Motherwell FC,Premiership,64,64,62,64
+114004,Stal Mielec,Ekstraklasa,64,69,65,63
+111705,IF Brommapojkarna,Allsvenskan,64,61,65,64
+112224,Melbourne City FC,A-League Men,64,58,65,66
+110206,GKS Katowice,Ekstraklasa,64,64,64,65
+112258,Gwangju FC,K League 1,64,65,64,64
+116361,Wuhan Three Towns,Super League,64,59,63,65
+1930,Northampton Town,League One,64,62,64,62
+110989,Caracas FC,Primera Division,64,65,64,64
+143,Exeter City,League One,64,64,63,64
+1938,Peterborough United,League One,64,64,65,63
+1940,Mansfield Town,League One,64,64,64,64
+1944,Cambridge United,League One,64,62,62,64
+922,Strømsgodset IF,Eliteserien,64,63,62,66
+110750,UTA Arad,Liga I,64,64,64,63
+131488,Qingdao West Coast FC,Super League,64,72,65,62
+110752,FC Botoşani,Liga I,64,63,64,64
+162,FC Energie Cottbus,3. Liga,64,65,65,63
+110501,SC Verl,3. Liga,64,63,65,63
+1962,Bristol Rovers,League One,64,64,64,63
+114604,Macarthur FC,A-League Men,64,60,65,63
+180,Dundee FC,Premiership,64,61,64,63
+110532,SV Waldhof Mannheim,3. Liga,64,67,64,64
+100805,St. Mirren,Premiership,64,64,66,64
+131795,San Antonio Bulo Bulo,División de Fútbol Profesional,64,63,64,64
+2015,Grazer AK 1902,Bundesliga,64,65,63,64
+114147,FC Hermannstadt,Liga I,64,65,63,64
+111083,Korona Kielce,Ekstraklasa,64,65,64,63
+110072,Oțelul Galați,Liga I,64,63,64,64
+2041,Fredrikstad FK,Eliteserien,64,63,64,65
+111097,Motor Lublin,Ekstraklasa,64,64,66,64
+506,FC Erzgebirge Aue,3. Liga,64,67,64,63
+110075,FCV Farul Constanța,Liga I,64,65,64,65
+110078,Asociația Clubul Sportiv Petrolul 52,Liga I,64,61,65,65
+112126,IFK Värnamo,Allsvenskan,64,63,65,63
+1798,Milton Keynes Dons,League Two,63,64,63,63
+132375,Gualberto Villarroel SJ,División de Fútbol Profesional,63,65,62,61
+110890,Crawley Town,League One,63,62,63,63
+321,Halmstads BK,Allsvenskan,63,62,62,61
+67,FC Martigues,Ligue 2,63,63,63,64
+110676,Borussia Dortmund II,3. Liga,63,64,65,63
+131173,Qingdao Hainiu FC,Super League,63,59,63,62
+114549,AS FC Buzău,Liga I,63,63,62,63
+631,Ross County FC,Premiership,63,64,65,62
+127,Shrewsbury Town,League One,63,61,63,63
+131459,Unirea Slobozia,Liga I,63,63,62,63
+112259,AFC Wimbledon,League Two,63,63,63,63
+1924,Chesterfield,League Two,63,60,62,62
+1928,Port Vale,League Two,63,62,64,62
+1935,Colchester United,League Two,63,63,63,62
+1937,Notts County,League Two,63,65,62,63
+113300,Mumbai City FC,Super League,63,64,63,60
+113302,Bengaluru FC,Super League,63,66,62,61
+111769,Changchun Yatai,Super League,63,67,60,63
+111774,Tianjin Jinmen Tiger,Super League,63,65,64,62
+131487,Shenzhen Peng City,Super League,63,65,62,63
+1439,Kalmar FF,Allsvenskan,63,65,63,63
+418,Tromsø IL,Eliteserien,63,65,62,62
+131491,KFUM-Kameratene Oslo,Eliteserien,63,63,64,62
+423,St Patrick's Athletic FC,Premier Division,63,63,63,61
+1447,Sønderjyske Fodbold,Superliga,63,63,63,62
+172,SpVgg Unterhaching,3. Liga,63,62,63,62
+1456,Odds Ballklubb,Eliteserien,63,60,64,62
+100804,St Johnstone FC,Premiership,63,63,63,61
+114393,Puszcza Niepołomice,Ekstraklasa,63,64,64,63
+110815,CSM Politehnica Iași,Liga I,63,60,63,64
+100325,HJK Helsinki,Veikkausliiga,63,64,64,60
+111594,GAIS,Allsvenskan,63,63,63,62
+111091,Lechia Gdańsk,Ekstraklasa,63,63,64,63
+113146,Mohun Bagan Super Giant,Super League,63,67,61,63
+113926,Salford City,League Two,62,62,63,61
+1802,Gillingham,League Two,62,58,62,62
+1803,Walsall,League Two,62,62,62,62
+1804,Bradford City,League Two,62,61,62,62
+111393,Adelaide United,A-League Men,62,61,63,63
+111395,Brisbane Roar,A-League Men,62,63,63,60
+111396,Central Coast Mariners,A-League Men,62,62,62,62
+111398,Newcastle Jets,A-League Men,62,61,62,62
+306,Shamrock Rovers,Premier Division,62,63,62,61
+92,Grimsby Town,League Two,62,62,61,62
+114023,Western United,A-League Men,62,64,61,61
+121,Crewe Alexandra,League Two,62,62,62,61
+381,Barrow,League Two,62,61,63,62
+112260,Fleetwood Town,League Two,62,61,62,63
+142,Doncaster Rovers,League Two,62,63,62,62
+1934,Swindon Town,League Two,62,62,61,62
+111766,Wellington Phoenix,A-League Men,62,64,62,62
+101016,Adana Demirspor,Süper Lig,62,62,63,60
+15015,Burton Albion,League One,62,60,61,62
+1756,Hamarkameratene,Eliteserien,62,63,61,63
+111629,East Bengal FC,Super League,61,62,61,58
+113459,Kristiansund BK,Eliteserien,61,63,59,61
+834,Shelbourne FC,Premier Division,61,61,60,61
+110683,Hannover 96 II,3. Liga,61,60,60,61
+112222,Harrogate Town,League Two,61,60,61,62
+110697,VfB Stuttgart II,3. Liga,61,64,61,61
+112764,Bromley,League Two,61,62,61,61
+1936,Cheltenham Town,League Two,61,61,62,61
+113298,FC Goa,Super League,61,68,61,60
+1463,FK Haugesund,Eliteserien,61,63,60,60
+445,Derry City,Premier Division,61,63,62,60
+114628,Meizhou Hakka,Super League,61,65,61,61
+1480,Carlisle United,League Two,61,59,60,61
+15048,Tranmere Rovers,League Two,61,61,61,62
+1757,Sandefjord Fotball,Eliteserien,61,61,62,61
+1571,Galway United,Premier Division,60,56,59,61
+305,Bohemian FC,Premier Division,60,61,61,59
+112180,Västerås SK,Allsvenskan,60,60,58,61
+357,Morecambe,League Two,60,60,60,60
+113257,Odisha FC,Super League,60,63,61,59
+112254,Newport County,League Two,60,61,60,59
+110313,Accrington Stanley,League Two,60,56,61,59
+113297,Chennaiyin FC,Super League,59,65,57,57
+113299,Kerala Blasters FC,Super League,59,64,56,58
+1572,Drogheda United,Premier Division,58,58,58,59
+563,Sligo Rovers,Premier Division,58,57,60,57
+112979,Nantong Zhiyun,Super League,58,65,59,58
+113040,NorthEast United,Super League,58,67,58,55
+753,Waterford FC,Premier Division,58,59,55,59
+114168,Jamshedpur FC,Super League,58,62,56,61
+115202,Punjab FC,Super League,57,64,57,55
+111633,Mohammedan SC,Super League,57,58,57,56
+113301,SC Delhi,Super League,56,58,57,55
+837,Dundalk,Premier Division,55,58,55,54
+112985,Cangzhou Mighty Lions FC,Super League,55,69,53,56
