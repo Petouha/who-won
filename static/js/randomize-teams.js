@@ -204,6 +204,9 @@ async function randomizeTeams(event) {
         return;
     }
     
+    // Détecter si c'est la première fois ou un re-randomize
+    const isFirstTime = document.getElementById('matchupResult').classList.contains('hidden');
+    
     const button = event ? event.target.closest('.btn') : document.querySelector('.btn-randomize');
     setButtonLoading(button, true);
     
@@ -228,7 +231,7 @@ async function randomizeTeams(event) {
         currentMatchup.player1Id = selectedPlayers.player1.id;
         currentMatchup.player2Id = selectedPlayers.player2.id;
         
-        displayMatchup();
+        displayMatchup(isFirstTime);
     } catch (error) {
         console.error('Error randomizing teams:', error);
         showMessage('❌ Error randomizing teams', 'error');
@@ -237,7 +240,7 @@ async function randomizeTeams(event) {
     }
 }
 
-function displayMatchup() {
+function displayMatchup(isFirstTime = true) {
     // Update player badges
     document.getElementById('player1Badge').innerHTML = `
         <div class="badge-icon">👤</div>
@@ -267,16 +270,16 @@ function displayMatchup() {
     // Rating difference
     document.getElementById('ratingDiff').textContent = currentMatchup.rating_difference;
     
-    // Show result section
-    document.getElementById('configSection').classList.add('completed');
-    document.getElementById('matchupResult').classList.remove('hidden');
-    document.getElementById('matchupResult').scrollIntoView({ behavior: 'smooth' });
+    // Show result section only the first time
+    if (isFirstTime) {
+        document.getElementById('configSection').classList.add('completed');
+        document.getElementById('matchupResult').classList.remove('hidden');
+        document.getElementById('matchupResult').scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 function reRandomize() {
-    // Hide result and re-randomize
-    document.getElementById('matchupResult').classList.add('hidden');
-    document.getElementById('configSection').classList.remove('completed');
+    // Just re-randomize without hiding the result section
     randomizeTeams(null);
 }
 
