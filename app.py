@@ -57,10 +57,6 @@ def players_page():
 
 @app.route('/add-match-page')
 def add_match_page():
-    return render_template('add-match.html')
-
-@app.route('/add-match-alt-page')
-def add_match_alt_page():
     return render_template('add-match-alt.html')
 
 @app.route('/history-page')
