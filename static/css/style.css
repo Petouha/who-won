@@ -823,9 +823,12 @@ body {
     animation: slideIn 0.5s ease;
 }
 
+.step-section.sliding-out {
+    animation: slideOut 0.5s ease forwards;
+}
+
 .step-section.completed {
     opacity: 0.7;
-    pointer-events: none;
 }
 
 .step-title {

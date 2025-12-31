@@ -76,14 +76,54 @@ function displayPlayerCards() {
 
 // Select player
 function selectPlayer(player) {
+    // If clicking on already selected player1 → deselect
+    if (selectedPlayers.player1 && player.id === selectedPlayers.player1.id) {
+        selectedPlayers.player1 = null;
+        updatePlayerSelection();
+        return;
+    }
+    
+    // If clicking on already selected player2 → deselect
+    if (selectedPlayers.player2 && player.id === selectedPlayers.player2.id) {
+        selectedPlayers.player2 = null;
+        updatePlayerSelection();
+        hideMatchDetails();
+        return;
+    }
+    
+    // If no player selected → select as player1
     if (!selectedPlayers.player1) {
         selectedPlayers.player1 = player;
         updatePlayerSelection();
-    } else if (!selectedPlayers.player2 && player.id !== selectedPlayers.player1.id) {
+    } 
+    // If player1 exists but not player2 → select as player2
+    else if (!selectedPlayers.player2 && player.id !== selectedPlayers.player1.id) {
         selectedPlayers.player2 = player;
         updatePlayerSelection();
         showMatchDetails();
     }
+    // If both players already selected → replace player2
+    else if (selectedPlayers.player1 && selectedPlayers.player2) {
+        selectedPlayers.player2 = player;
+        updatePlayerSelection();
+        showMatchDetails();
+    }
+}
+
+// Hide match details section
+function hideMatchDetails() {
+    const matchDetails = document.getElementById('matchDetails');
+    const playerSelection = document.getElementById('playerSelection');
+    
+    // Add sliding-out animation
+    matchDetails.classList.add('sliding-out');
+    
+    // Wait for animation to complete before hiding
+    setTimeout(() => {
+        matchDetails.classList.remove('sliding-out');
+        matchDetails.classList.add('hidden');
+        playerSelection.classList.remove('completed');
+    }, 500); // Match animation duration (0.5s)
 }
 
 // Update player selection display
@@ -96,11 +136,11 @@ function updatePlayerSelection() {
         if (p1Card) p1Card.classList.add('selected');
         
         // Disable player 1 card
-        cards.forEach(card => {
-            if (card.textContent.includes(selectedPlayers.player1.name)) {
-                card.classList.add('disabled');
-            }
-        });
+        // cards.forEach(card => {
+        //     if (card.textContent.includes(selectedPlayers.player1.name)) {
+        //         card.classList.add('disabled');
+        //     }
+        // });
     }
     
     if (selectedPlayers.player2) {
