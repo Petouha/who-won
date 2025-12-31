@@ -1117,7 +1117,7 @@ body {
 }
 
 .penalty-checkbox span::before {
-    content: 'PENALTY';
+    content: 'Penalties';
     display: flex;
     align-items: center;
     justify-content: center;

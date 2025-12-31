@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000';
+const API_URL = window.location.origin;
 let allGames = [];
 let allPlayers = [];
 let playerMap = {};

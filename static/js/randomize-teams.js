@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000';
+const API_URL = window.location.origin;
 let allTeams = [];
 let excludedTeams = [];
 let currentMatchup = null;
@@ -297,7 +297,7 @@ function acceptMatchup() {
     sessionStorage.setItem('prefilledMatch', JSON.stringify(matchData));
     
     // Navigate to add-match-alt
-    window.location.href = '/add-match-alt-page';
+    window.location.href = '/add-match-page';
 }
 
 function showMessage(message, type = 'success') {
