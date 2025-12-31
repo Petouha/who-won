@@ -172,6 +172,11 @@ body {
     font-size: 1rem;
 }
 
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
 /* Back Button */
 .back-button {
     display: inline-block;
@@ -917,6 +922,12 @@ body {
 }
 
 /* Team Selection */
+.team-selection {
+    display: grid;
+    grid-template-rows: auto minmax(6rem, auto) auto auto;
+    gap: 0;
+}
+
 .team-selection h3 {
     color: var(--text);
     margin-bottom: 1rem;
@@ -928,6 +939,9 @@ body {
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    align-content: flex-start;
+    max-height: 12rem;
+    overflow-y: auto;
 }
 
 .team-chip {
