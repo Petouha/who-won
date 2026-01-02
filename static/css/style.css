@@ -1500,6 +1500,14 @@ body {
     text-align: center;
     width: 100%;
     transition: all 0.3s ease;
+    -moz-appearance: textfield;
+}
+
+/* Hide number input arrows */
+.range-input input[type="number"]::-webkit-inner-spin-button,
+.range-input input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .range-input input[type="number"]:focus {
@@ -1510,10 +1518,57 @@ body {
 }
 
 .range-separator {
-    font-size: 2rem;
+    font-size: 5rem;
     color: var(--primary);
     margin-top: 2rem;
     font-weight: 900;
+}
+
+.max-diff-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    max-width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.max-diff-input label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.max-diff-input input[type="number"] {
+    background: var(--dark);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    color: var(--text);
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-align: center;
+    width: 100%;
+    transition: all 0.3s ease;
+    -moz-appearance: textfield;
+}
+
+/* Hide number input arrows */
+.max-diff-input input[type="number"]::-webkit-inner-spin-button,
+.max-diff-input input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.max-diff-input input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    transform: scale(1.03);
 }
 
 .team-dropdown {

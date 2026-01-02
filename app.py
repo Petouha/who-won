@@ -123,6 +123,7 @@ def randomize_teams():
     data = request.get_json()
     min_rating = data.get('min_rating', 70)
     max_rating = data.get('max_rating', 90)
+    max_difference = data.get('max_difference', 1)
     excluded_teams = data.get('excluded_teams', [])
     
     try:
@@ -142,10 +143,10 @@ def randomize_teams():
         # Sélectionner la première équipe
         team1 = random.choice(teams)
         
-        # Trouver des équipes avec un rating similaire (±2)
+        # Trouver des équipes avec un rating similaire (selon max_difference)
         team1_rating = team1['overall']
         balanced_teams = [t for t in teams if t['name'] != team1['name'] 
-                         and abs(t['overall'] - team1_rating) <= 1]
+                         and abs(t['overall'] - team1_rating) <= max_difference]
         
         # Si pas assez d'équipes équilibrées, élargir la recherche
         if not balanced_teams:

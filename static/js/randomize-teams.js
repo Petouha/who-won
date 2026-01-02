@@ -198,6 +198,7 @@ function updateExcludedTeamsDisplay() {
 async function randomizeTeams(event) {
     const minRating = parseInt(document.getElementById('minRating').value);
     const maxRating = parseInt(document.getElementById('maxRating').value);
+    const maxDifference = parseInt(document.getElementById('maxDifference').value);
     
     if (minRating > maxRating) {
         showMessage('❌ Minimum rating cannot be greater than maximum rating', 'error');
@@ -217,6 +218,7 @@ async function randomizeTeams(event) {
             body: JSON.stringify({
                 min_rating: minRating,
                 max_rating: maxRating,
+                max_difference: maxDifference,
                 excluded_teams: excludedTeams
             })
         });
