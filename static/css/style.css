@@ -177,6 +177,97 @@ body {
     display: none !important;
 }
 
+/* Top Navigation Bar */
+.top-nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--dark-light);
+    border-bottom: 0.5px solid var(--secondary);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2rem;
+    margin: -1.5rem -2rem 2rem -2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.top-nav.hidden-scroll {
+    transform: translateY(-100%);
+}
+
+.nav-left {
+    position: absolute;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-home-btn {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    background: var(--dark);
+    border: 0.5px solid var(--secondary);
+    border-radius: 10px;
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-home-btn:hover {
+    background: var(--primary);
+    color: var(--dark);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    background: var(--dark);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-link:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px) scale(1.05);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--dark);
+    border-color: var(--primary);
+    transform: scale(1.1);
+}
+
 /* Back Button */
 .back-button {
     display: inline-block;
