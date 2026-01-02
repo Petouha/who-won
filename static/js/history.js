@@ -234,13 +234,32 @@ function calculateMatchupStats(games, player1Id, player2Id) {
     const player1 = playerMap[player1Id];
     const player2 = playerMap[player2Id];
     
-    // Calculate head-to-head wins/losses for regular and penalty
+    // Calculate head-to-head stats from the filtered games
     let p1WinsRegular = 0, p1WinsPenalty = 0;
     let p2WinsRegular = 0, p2WinsPenalty = 0;
     let p1Losses = 0, p2Losses = 0;
     let p1Draws = 0, p2Draws = 0;
+    let p1GoalsFor = 0, p1GoalsAgainst = 0;
+    let p2GoalsFor = 0, p2GoalsAgainst = 0;
     
     games.forEach(game => {
+        // Determine who is player_one and player_two in this game
+        const isP1AsPlayerOne = game.player_one_id === player1Id;
+        
+        // Calculate goals
+        if (isP1AsPlayerOne) {
+            p1GoalsFor += game.score_player_one;
+            p1GoalsAgainst += game.score_player_two;
+            p2GoalsFor += game.score_player_two;
+            p2GoalsAgainst += game.score_player_one;
+        } else {
+            p1GoalsFor += game.score_player_two;
+            p1GoalsAgainst += game.score_player_one;
+            p2GoalsFor += game.score_player_one;
+            p2GoalsAgainst += game.score_player_two;
+        }
+        
+        // Calculate wins/losses/draws
         if (game.winner_id === player1Id) {
             p1WinsRegular += game.penalty ? 0 : 1;
             p1WinsPenalty += game.penalty ? 1 : 0;
@@ -259,24 +278,24 @@ function calculateMatchupStats(games, player1Id, player2Id) {
         player1: {
             id: player1Id,
             name: player1.name,
-            wins: player1.wins || 0,
+            wins: p1WinsRegular + p1WinsPenalty,
             winsRegular: p1WinsRegular,
             winsPenalty: p1WinsPenalty,
-            losses: player1.losses || 0,
-            draws: player1.draws || 0,
-            goalsFor: player1.goals_for || 0,
-            goalsAgainst: player1.goals_against || 0
+            losses: p1Losses,
+            draws: p1Draws,
+            goalsFor: p1GoalsFor,
+            goalsAgainst: p1GoalsAgainst
         },
         player2: {
             id: player2Id,
             name: player2.name,
-            wins: player2.wins || 0,
+            wins: p2WinsRegular + p2WinsPenalty,
             winsRegular: p2WinsRegular,
             winsPenalty: p2WinsPenalty,
-            losses: player2.losses || 0,
-            draws: player2.draws || 0,
-            goalsFor: player2.goals_for || 0,
-            goalsAgainst: player2.goals_against || 0
+            losses: p2Losses,
+            draws: p2Draws,
+            goalsFor: p2GoalsFor,
+            goalsAgainst: p2GoalsAgainst
         },
         totalGames: games.length
     };
@@ -320,15 +339,15 @@ function displayMatchupStats(stats) {
                 <div class="stats-row">
                     <div class="stat-item">
                         <span class="stat-label">Goals For</span>
-                        <span class="stat-value">${stats.player1.goalsFor}</span>
+                        <span class="stat-value success">${stats.player1.goalsFor}</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">Goals Against</span>
-                        <span class="stat-value">${stats.player1.goalsAgainst}</span>
+                        <span class="stat-value danger">${stats.player1.goalsAgainst}</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">Difference</span>
-                        <span class="stat-value">${stats.player1.goalsFor - stats.player1.goalsAgainst > 0 ? '+' : ''}${stats.player1.goalsFor - stats.player1.goalsAgainst}</span>
+                        <span class="stat-value ${stats.player1.goalsFor - stats.player1.goalsAgainst > 0 ? 'success' : stats.player1.goalsFor - stats.player1.goalsAgainst < 0 ? 'danger' : ''}">${stats.player1.goalsFor - stats.player1.goalsAgainst > 0 ? '+' : ''}${stats.player1.goalsFor - stats.player1.goalsAgainst}</span>
                     </div>
                 </div>
             </div>
@@ -367,15 +386,15 @@ function displayMatchupStats(stats) {
                 <div class="stats-row">
                     <div class="stat-item">
                         <span class="stat-label">Goals For</span>
-                        <span class="stat-value">${stats.player2.goalsFor}</span>
+                        <span class="stat-value success">${stats.player2.goalsFor}</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">Goals Against</span>
-                        <span class="stat-value">${stats.player2.goalsAgainst}</span>
+                        <span class="stat-value danger">${stats.player2.goalsAgainst}</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">Difference</span>
-                        <span class="stat-value">${stats.player2.goalsFor - stats.player2.goalsAgainst > 0 ? '+' : ''}${stats.player2.goalsFor - stats.player2.goalsAgainst}</span>
+                        <span class="stat-value ${stats.player2.goalsFor - stats.player2.goalsAgainst > 0 ? 'success' : stats.player2.goalsFor - stats.player2.goalsAgainst < 0 ? 'danger' : ''}">${stats.player2.goalsFor - stats.player2.goalsAgainst > 0 ? '+' : ''}${stats.player2.goalsFor - stats.player2.goalsAgainst}</span>
                     </div>
                 </div>
             </div>

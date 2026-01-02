@@ -145,7 +145,7 @@ def randomize_teams():
         # Trouver des équipes avec un rating similaire (±2)
         team1_rating = team1['overall']
         balanced_teams = [t for t in teams if t['name'] != team1['name'] 
-                         and abs(t['overall'] - team1_rating) <= 2]
+                         and abs(t['overall'] - team1_rating) <= 1]
         
         # Si pas assez d'équipes équilibrées, élargir la recherche
         if not balanced_teams:
@@ -216,6 +216,8 @@ def get_games():
             "team_one": g.team_one,
             "team_two": g.team_two,
             "score": f"{g.score_player_one}-{g.score_player_two}",
+            "score_player_one": g.score_player_one,
+            "score_player_two": g.score_player_two,
             "penalty": g.penalty,
             "penalty_score": f"{g.penalty_score_player_one}-{g.penalty_score_player_two}" if g.penalty else None,
             "winner_id": g.winner_id,
