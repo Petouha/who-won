@@ -4,10 +4,6 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
-with open("teams.txt", "r", encoding="utf-8") as f:
-    TEAM_NAMES = [line.strip() for line in f.readlines()]
-
-
 
 class Game(db.Model):
     __tablename__ = 'games'
@@ -17,8 +13,8 @@ class Game(db.Model):
     player_one_id = db.Column(db.Integer, db.ForeignKey('players.id'), nullable=False)
     player_two_id = db.Column(db.Integer, db.ForeignKey('players.id'), nullable=False)
     
-    team_one = db.Column(db.Enum(*TEAM_NAMES,name="team_names"), nullable=False)
-    team_two = db.Column(db.Enum(*TEAM_NAMES,name="team_names"), nullable=False)
+    team_one = db.Column(db.String(100), nullable=False)
+    team_two = db.Column(db.String(100), nullable=False)
     
     score_player_one = db.Column(db.Integer, nullable=False)
     score_player_two = db.Column(db.Integer, nullable=False)
@@ -31,8 +27,32 @@ class Game(db.Model):
     
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     
+    @validates('team_one', 'team_two')
+    def validate_team(self, key, team):
+        """Validate team names"""
+        if not team or not team.strip():
+            raise ValueError(f"{key} cannot be empty")
+        if len(team) > 100:
+            raise ValueError(f"{key} is too long (max 100 characters)")
+        return team.strip()
+    
+    @validates('player_one_id', 'player_two_id')
+    def validate_different_players(self, key, player_id):
+        """Validate that both players are different"""
+        if key == 'player_two_id' and hasattr(self, 'player_one_id') and self.player_one_id:
+            if player_id == self.player_one_id:
+                raise ValueError("Both players must be different")
+        return player_id
+    
+    @validates('score_player_one', 'score_player_two')
+    def validate_score(self, key, score):
+        """Validate that scores are non-negative"""
+        if score < 0:
+            raise ValueError(f"{key} cannot be negative")
+        return score
+    
     def calculate_winner(self):
-        """Calcule le gagnant basé sur les scores"""
+        """Calculate winner based on scores"""
         if self.score_player_one > self.score_player_two:
             self.winner_id = self.player_one_id
         elif self.score_player_two > self.score_player_one:
