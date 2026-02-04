@@ -792,6 +792,39 @@ body {
     justify-self: end;
 }
 
+.match-item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeIn 0.5s ease both;
+}
+
+.match-item-wrapper .match-item {
+    flex: 1;
+}
+
+.rematch-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.rematch-btn:hover {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-color: var(--primary);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
 .match-players-display {
     display: grid;
     grid-template-columns: 1fr auto 1fr;

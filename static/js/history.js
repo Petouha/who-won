@@ -3,6 +3,18 @@ let allGames = [];
 let allPlayers = [];
 let playerMap = {};
 
+// Rematch - copy match data and redirect to add-match
+function rematch(player1Id, player2Id, team1, team2) {
+    const matchData = {
+        player1Id: player1Id,
+        player2Id: player2Id,
+        team1: team1,
+        team2: team2
+    };
+    sessionStorage.setItem('prefilledMatch', JSON.stringify(matchData));
+    window.location.href = '/add-match-page';
+}
+
 // Switch between tabs
 function switchTab(tabName) {
     // Update tab buttons
@@ -67,9 +79,12 @@ function loadChronological() {
 
 // Create match card
 function createMatchCard(game, index) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'match-item-wrapper';
+    wrapper.style.animationDelay = `${index * 0.05}s`;
+    
     const matchDiv = document.createElement('div');
     matchDiv.className = 'match-item';
-    matchDiv.style.animationDelay = `${index * 0.05}s`;
     
     const p1Name = playerMap[game.player_one_id]?.name || 'Unknown';
     const p2Name = playerMap[game.player_two_id]?.name || 'Unknown';
@@ -93,7 +108,7 @@ function createMatchCard(game, index) {
         <div class="match-header">
             <span style="color: var(--text-muted); font-size: 0.9rem;">Match #${game.id}</span>
             <span style="color: var(--success); font-weight: 900; font-size: 1.3rem;">🏆 ${winner}</span>
-            ${dateStr ? `<span style="color: var(--text-muted); font-size: 0.9rem;">📅 ${dateStr} • 🕐 ${timeStr}</span>` : '<span></span>'}
+            <span style="color: var(--text-muted); font-size: 0.9rem;">${dateStr ? `📅 ${dateStr} • 🕐 ${timeStr}` : ''}</span>
         </div>
         <div class="match-players-display">
             <div class="player-display ${isP1Winner ? 'winner' : ''} ${isP1Loser ? 'loser' : ''} ${isDraw ? 'draw' : ''}">
@@ -111,7 +126,16 @@ function createMatchCard(game, index) {
         </div>
     `;
     
-    return matchDiv;
+    const rematchBtn = document.createElement('button');
+    rematchBtn.className = 'rematch-btn';
+    rematchBtn.innerHTML = '🔄';
+    rematchBtn.title = 'Rematch';
+    rematchBtn.onclick = () => rematch(game.player_one_id, game.player_two_id, game.team_one, game.team_two);
+    
+    wrapper.appendChild(matchDiv);
+    wrapper.appendChild(rematchBtn);
+    
+    return wrapper;
 }
 
 // Populate matchup selectors
