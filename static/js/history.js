@@ -9,7 +9,8 @@ function rematch(player1Id, player2Id, team1, team2) {
         player1Id: player1Id,
         player2Id: player2Id,
         team1: team1,
-        team2: team2
+        team2: team2,
+        source: 'rematch'
     };
     sessionStorage.setItem('prefilledMatch', JSON.stringify(matchData));
     window.location.href = '/add-match-page';

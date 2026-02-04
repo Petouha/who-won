@@ -50,7 +50,12 @@ function loadPrefilledMatch(data) {
         document.getElementById('selectedTeam2').textContent = data.team2;
         document.getElementById('selectedTeam2').classList.add('selected');
         
-        showMessage('✨ Teams loaded from randomizer', 'success');
+        // Show message based on source
+        if (data.source === 'rematch') {
+            showMessage('🔄 Rematch loaded from history', 'success');
+        } else {
+            showMessage('✨ Teams loaded from randomizer', 'success');
+        }
     }
     
     // Clear session storage
