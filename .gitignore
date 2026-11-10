@@ -23,3 +23,6 @@ venv/
 
 # Pages sofifa enregistrées à la main (entrée du script sync-teams, ~1 Mo)
 data/sofifa-pages/
+
+# Marqueurs de téléchargement Windows
+*:Zone.Identifier
