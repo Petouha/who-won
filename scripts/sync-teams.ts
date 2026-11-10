@@ -1,6 +1,6 @@
-// Construit data/team_ratings.csv à partir de pages sofifa enregistrées depuis un navigateur.
+// Construit data/team_ratings.csv à partir de pages sofifa (fichiers .html enregistrés, ou lot .json du snippet console).
 //
-//   npm run sync:teams                     # lit data/sofifa-pages/*.html, écrit le CSV
+//   npm run sync:teams                     # lit data/sofifa-pages/*.html|json, écrit le CSV
 //   npm run sync:teams -- --dry            # n'écrit rien, affiche seulement le bilan
 //   npm run sync:teams -- <dossier>        # autre dossier de pages
 //   npm run sync:teams -- --force          # écrit même s'il manque beaucoup d'équipes
@@ -23,14 +23,27 @@ const fail = (msg: string): never => {
 
 // 1. Lire les pages
 if (!existsSync(dir)) fail(`Dossier introuvable : ${dir}`);
-const files = readdirSync(dir).filter((f) => f.toLowerCase().endsWith('.html')).sort();
-if (!files.length) fail(`Aucun fichier .html dans ${dir}`);
+const files = readdirSync(dir).filter((f) => /\.(html|json)$/i.test(f)).sort();
+if (!files.length) fail(`Aucun fichier .html ou .json dans ${dir}`);
 
-const pages: (ParsedTeamsPage & { file: string })[] = files.map((file) => {
+// Un fichier .html = une page enregistrée ; un .json = lot de pages produit par scripts/sofifa-console-snippet.js
+const sources: { name: string; html: string }[] = files.flatMap((file) => {
+	const raw = readFileSync(join(dir, file), 'utf-8');
+	if (!file.toLowerCase().endsWith('.json')) return [{ name: file, html: raw }];
 	try {
-		return { file, ...parseTeamsPage(readFileSync(join(dir, file), 'utf-8')) };
+		const bundle = JSON.parse(raw) as { pages?: { html?: unknown }[] };
+		if (!Array.isArray(bundle.pages) || bundle.pages.some((p) => typeof p.html !== 'string')) throw new Error('format inattendu');
+		return bundle.pages.map((p, i) => ({ name: `${file} #${i + 1}`, html: p.html as string }));
 	} catch (e) {
-		return fail(`${file} : ${(e as Error).message}`);
+		return fail(`${file} : lot de pages illisible (${(e as Error).message})`);
+	}
+});
+
+const pages: (ParsedTeamsPage & { file: string })[] = sources.map(({ name, html }) => {
+	try {
+		return { file: name, ...parseTeamsPage(html) };
+	} catch (e) {
+		return fail(`${name} : ${(e as Error).message}`);
 	}
 });
 console.log(`${pages.length} page(s) lue(s) :`);

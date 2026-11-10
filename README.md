@@ -46,9 +46,9 @@ Variables d'environnement (voir `.env.example`) : `ACCESS_CODE`, `SESSION_SECRET
 
 sofifa est protégé par Cloudflare : un script ne peut pas télécharger les pages seul. On enregistre donc les pages depuis un navigateur, et un script les transforme en CSV.
 
-1. Ouvre https://sofifa.com/teams?col=oa&sort=desc&set=true (la version affichée par défaut est la plus récente ; vérifie la date dans la liste « mise à jour »).
-2. Enregistre la page : clic droit, « Enregistrer sous… », type **Page web, HTML uniquement**, dans `data/sofifa-pages/`.
-3. Clique sur « Suivant » et recommence, jusqu'à la page qui n'a plus de bouton « Suivant » (≈ 10 pages de 75 équipes).
+1. Dans ton navigateur habituel, ouvre https://sofifa.com/teams?col=oa&sort=desc&set=true et vérifie la date de la mise à jour affichée.
+2. Ouvre la console (F12 > Console), colle le contenu de [`scripts/sofifa-console-snippet.js`](scripts/sofifa-console-snippet.js) (Chrome demande de taper « allow pasting » avant) et valide. Le script suit les boutons « Suivant » avec 1,5 s de pause, puis télécharge `sofifa-teams.json`.
+3. Déplace ce fichier dans `data/sofifa-pages/` (on peut aussi y mettre des pages `.html` enregistrées à la main).
 4. `npm run sync:teams -- --dry` pour vérifier (pages manquantes, mélange de mises à jour, notes modifiées), puis `npm run sync:teams` pour écrire `data/team_ratings.csv` et `data/team_ratings.meta.json`.
 5. Commite ces deux fichiers. Au démarrage, l'app met à jour ses équipes depuis le CSV, par id sofifa : nouvelles notes, aucune suppression. Les matchs déjà joués gardent la note de l'époque.
 
