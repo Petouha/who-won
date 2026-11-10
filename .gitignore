@@ -65,3 +65,14 @@ coverage.xml
 .pytest_cache/
 
 scripts/
+
+# Node / SvelteKit
+node_modules/
+.svelte-kit/
+build/
+.env
+.env.*
+!.env.example
+*.db
+*.db-shm
+*.db-wal

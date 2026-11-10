@@ -1,0 +1,373 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "8ca62d44-17f5-42e2-abc2-0f66052558b7",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "match": {
+      "name": "match",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "played_at": {
+          "name": "played_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(unixepoch())"
+        },
+        "home_player_id": {
+          "name": "home_player_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "away_player_id": {
+          "name": "away_player_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "home_team_id": {
+          "name": "home_team_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "away_team_id": {
+          "name": "away_team_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "home_goals": {
+          "name": "home_goals",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "away_goals": {
+          "name": "away_goals",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "home_pens": {
+          "name": "home_pens",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "away_pens": {
+          "name": "away_pens",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "home_rating": {
+          "name": "home_rating",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "away_rating": {
+          "name": "away_rating",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_by": {
+          "name": "created_by",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "match_played_at_idx": {
+          "name": "match_played_at_idx",
+          "columns": [
+            "played_at"
+          ],
+          "isUnique": false
+        },
+        "match_home_player_idx": {
+          "name": "match_home_player_idx",
+          "columns": [
+            "home_player_id"
+          ],
+          "isUnique": false
+        },
+        "match_away_player_idx": {
+          "name": "match_away_player_idx",
+          "columns": [
+            "away_player_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "match_home_player_id_player_id_fk": {
+          "name": "match_home_player_id_player_id_fk",
+          "tableFrom": "match",
+          "tableTo": "player",
+          "columnsFrom": [
+            "home_player_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "match_away_player_id_player_id_fk": {
+          "name": "match_away_player_id_player_id_fk",
+          "tableFrom": "match",
+          "tableTo": "player",
+          "columnsFrom": [
+            "away_player_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "match_home_team_id_team_id_fk": {
+          "name": "match_home_team_id_team_id_fk",
+          "tableFrom": "match",
+          "tableTo": "team",
+          "columnsFrom": [
+            "home_team_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "match_away_team_id_team_id_fk": {
+          "name": "match_away_team_id_team_id_fk",
+          "tableFrom": "match",
+          "tableTo": "team",
+          "columnsFrom": [
+            "away_team_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "match_created_by_player_id_fk": {
+          "name": "match_created_by_player_id_fk",
+          "tableFrom": "match",
+          "tableTo": "player",
+          "columnsFrom": [
+            "created_by"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "players_differ": {
+          "name": "players_differ",
+          "value": "\"match\".\"home_player_id\" <> \"match\".\"away_player_id\""
+        },
+        "goals_non_negative": {
+          "name": "goals_non_negative",
+          "value": "\"match\".\"home_goals\" >= 0 AND \"match\".\"away_goals\" >= 0"
+        },
+        "pens_consistent": {
+          "name": "pens_consistent",
+          "value": "(\"match\".\"home_pens\" IS NULL AND \"match\".\"away_pens\" IS NULL)\n\t\t\t\tOR (\"match\".\"home_pens\" IS NOT NULL AND \"match\".\"away_pens\" IS NOT NULL\n\t\t\t\t\tAND \"match\".\"home_goals\" = \"match\".\"away_goals\"\n\t\t\t\t\tAND \"match\".\"home_pens\" >= 0 AND \"match\".\"away_pens\" >= 0\n\t\t\t\t\tAND \"match\".\"home_pens\" <> \"match\".\"away_pens\")"
+        }
+      }
+    },
+    "player": {
+      "name": "player",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'member'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(unixepoch())"
+        }
+      },
+      "indexes": {
+        "player_name_uq": {
+          "name": "player_name_uq",
+          "columns": [
+            "lower(\"name\")"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "team": {
+      "name": "team",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "league": {
+          "name": "league",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "overall": {
+          "name": "overall",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "attack": {
+          "name": "attack",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "midfield": {
+          "name": "midfield",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "defence": {
+          "name": "defence",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(unixepoch())"
+        }
+      },
+      "indexes": {
+        "team_source_uq": {
+          "name": "team_source_uq",
+          "columns": [
+            "source_id"
+          ],
+          "isUnique": true
+        },
+        "team_overall_idx": {
+          "name": "team_overall_idx",
+          "columns": [
+            "overall"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {
+      "player_name_uq": {
+        "columns": {
+          "lower(\"name\")": {
+            "isExpression": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,119 +1,51 @@
-# ⚽ Who Won - FIFA Match Tracker
+# Who Won
 
-A modern web application to track FIFA game matches between players, with beautiful statistics and leaderboards.
+Suivi des matchs FIFA (EA FC 26) entre amis : saisie rapide, historique, classement Elo, face-à-face, tirage d'équipes équilibrées.
 
-![alt text](images/main_page.png)
+> L'ancienne version Flask est conservée dans [`legacy/`](legacy/) pour référence.
 
-## ✨ Features
+## Stack
 
-- **Match Recording**: Two view modes (Classic & Card View) to record matches with teams and scores
-- **Penalty Support**: Track penalty shootouts separately
-- **Player Management**: Add and manage players with unique names
-- **Match History**: 
-  - Chronological view of all matches
-  - Head-to-head matchup analysis with detailed statistics
-  - Quick access suggestions for frequent matchups
-- **Leaderboard**: Comprehensive player rankings with:
-  - Wins, Losses, Draws
-  - Win Rate with color indicators
-  - Goals For/Against with color coding
-  - Goal Difference
-- **Auto Stats**: Player statistics automatically update after each match
-- **Modern UI**: Dark theme with gradient effects and smooth animations
+SvelteKit 3 (Svelte 5, TypeScript) · SQLite (`better-sqlite3`) + Drizzle ORM · `adapter-node` · Vitest.
+Un seul process Node (~100 Mo de RAM) sert le front et le « backend ».
 
-## 🚀 Tech Stack
+## Lancer en local
 
-- **Backend**: Flask 3.0.0 (Python)
-- **Database**: SQLite with SQLAlchemy ORM
-- **Frontend**: Vanilla JavaScript with modern CSS
-- **Design**: Custom dark theme with gradient effects
-
-## 📦 Installation
-
-1. Clone the repository:
 ```bash
-git clone https://github.com/Petouha/who-won.git
-cd who-won
+npm install
+npm run dev          # http://localhost:5173, code d'accès par défaut : « dev »
+npm test             # logique de stats, validation de saisie, randomizer
+npm run check        # types
 ```
 
-2. Install dependencies:
+La base (`data/who-won.db`) est créée au premier lancement : migrations appliquées automatiquement, 688 équipes importées depuis `data/team_ratings.csv`.
+
+## Modèle de données
+
+- `player` : nom unique (insensible à la casse) ; `password_hash`/`role` déjà là pour de futurs comptes.
+- `team` : équipes avec leurs notes (global, attaque, milieu, défense), id sofifa en `source_id`.
+- `match` : 1v1, buts, tirs au but optionnels, note des équipes *au moment du match*. Contraintes SQL (joueurs différents, buts ≥ 0, tirs au but cohérents).
+
+Le vainqueur n'est jamais stocké. Classement, Elo et face-à-face sont calculés depuis `match` (`src/lib/stats.ts`), donc modifier ou supprimer un match ne désynchronise rien.
+
+## Accès
+
+Tout le site est derrière un code partagé (`ACCESS_CODE`), puis un cookie signé HMAC (90 jours). À l'entrée on peut dire « qui on est » : ça pré-remplit la saisie et trace l'auteur des matchs. 10 essais de code ratés par 10 minutes et par IP, puis blocage temporaire.
+
+## Déploiement (Node derrière Caddy)
+
 ```bash
-pip install -r requirements.txt
+npm ci && npm run build                 # sur ta machine, jamais sur le serveur
+rsync -a build drizzle data/team_ratings.csv package.json package-lock.json user@serveur:/opt/who-won/
+# sur le serveur : npm ci --omit=dev
 ```
 
-3. Run the application:
-```bash
-python app.py
-```
+Variables d'environnement (voir `.env.example`) : `ACCESS_CODE`, `SESSION_SECRET`, **`ORIGIN`** (l'URL publique en https, sinon SvelteKit refuse les formulaires), `PORT`, `DATABASE_URL`. Lancer avec `node build` sous systemd ; Caddy fait `reverse_proxy localhost:3000`. Sauvegarde : copier `data/who-won.db` (SQLite en mode WAL : utiliser `sqlite3 .backup`).
 
-4. Open your browser at `http://localhost:5000`
+## Synchro des notes d'équipes (à faire)
 
-## 🎮 Usage
+`data/team_ratings.csv` est l'export FC 25 d'origine : **les notes ne sont pas encore celles de FC 26.** Recherche faite le 10/11/2026 :
 
-### Adding Players
-1. Navigate to "Manage Players"
-2. Enter a player name (must be unique)
-3. Click "Add Player"
-
-![alt text](images/add_player_page.png)
-
-### Recording a Match
-
-**Classic View (Legacy)**:
-- Select both players from dropdowns
-- Type team names (autocomplete available)
-- Enter scores
-- Toggle penalty shootout if needed
-
-**Card View (Recommended)**:
-- Click on two player cards to select them
-- Choose teams from favorites or search
-- Use +/- buttons to adjust scores
-- Toggle the penalty button if needed
-- Click "Save Match"
-
-### Viewing Statistics
-
-**Match History**:
-- **Chronological**: See all matches in order with color-coded winners (green), losers (red), and draws (yellow)
-- **Head-to-Head**: Select two players to see detailed matchup statistics including total games, win rates, and goals
-
-![alt text](images/match_history_page.png)
-
-**Leaderboard**:
-- View all players ranked by win rate
-- Color-coded statistics (green for positive, red for negative, yellow for draws)
-- Comprehensive stats per player
-
-![alt text](images/leaderboard_page.png)
-
-## 🎨 Features Highlights
-
-### Color-Coded Statistics
-- **Green**: Wins, Goals For, Positive Difference, High Win Rate
-- **Red**: Losses, Goals Against, Negative Difference, Low Win Rate
-- **Yellow**: Draws
-- **Blue**: Primary color for scores and highlights
-
-### Smart Features
-- **Autocomplete**: Team name suggestions while typing
-- **Favorite Teams**: Quick access to frequently used teams per player
-- **Duplicate Prevention**: Cannot create players with the same name (case-insensitive)
-- **Auto Winner Detection**: Automatically determines match winner including penalty shootouts
-- **Responsive Design**: Works on desktop and mobile devices
-
-## 📝 API Endpoints
-
-- `GET /`: Home page
-- `GET /players`: Get all players
-- `POST /players`: Add new player
-- `GET /games`: Get all matches
-- `POST /games`: Create new match
-- `GET /leaderboard`: Get player rankings
-- `GET /api/teams`: Get all available teams
-- `GET /api/favorite-teams/<player_id>`: Get player's favorite teams
-
-## 🤝 Contributing
-
-Feel free to open issues or submit pull requests!
-
+- sofifa.com est derrière un challenge Cloudflare interactif (y compris `robots.txt`) : pas de scraping `curl`, pas de navigateur headless fiable.
+- `soccerdata` (probberechts) est le seul outil maintenu : il passe par `seleniumbase` (mode UC) mais ne lit que id/nom/ligue, pas les notes.
+- Piste retenue : un script d'import qui lit des pages `https://sofifa.com/teams?type=all&r=<version>&set=true&offset=…` **enregistrées depuis un vrai navigateur**, jointure par id sofifa (jamais par nom), `upsert` dans `team`. Les matchs gardent leurs notes d'époque.
