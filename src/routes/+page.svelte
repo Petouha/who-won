@@ -22,7 +22,7 @@
 						<span class="rank num">{i + 1}</span>
 						<a href="/history?p={s.playerId}"><strong>{s.name}</strong></a>
 						<FormDots form={s.form} />
-						<span class="num elo">{s.elo}</span>
+						<span class="num elo">{s.winRate.toFixed(0)} %</span>
 					</li>
 				{/each}
 			</ol>

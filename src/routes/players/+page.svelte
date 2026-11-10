@@ -21,13 +21,12 @@
 			<p class="muted">Aucun joueur pour l’instant.</p>
 		{:else}
 			<table>
-				<thead><tr><th>Joueur</th><th>Matchs</th><th>Elo</th><th></th></tr></thead>
+				<thead><tr><th>Joueur</th><th>Matchs</th><th></th></tr></thead>
 				<tbody>
 					{#each data.players as p (p.id)}
 						<tr>
 							<td><a href="/history?p={p.id}">{p.name}</a></td>
 							<td class="num">{p.played}</td>
-							<td class="num">{p.elo}</td>
 							<td>
 								{#if p.played === 0}
 									<form method="POST" action="?/remove" use:enhance>

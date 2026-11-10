@@ -3,11 +3,12 @@
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
 
-	type Key = 'elo' | 'wins' | 'winRate' | 'goalDiff' | 'played';
-	let sort = $state<Key>('elo');
-	const rows = $derived([...data.rows].sort((a, b) => b[sort] - a[sort] || b.elo - a.elo));
+	type Key = 'wins' | 'winRate' | 'goalDiff' | 'played';
+	let sort = $state<Key>('winRate');
+	// Tri choisi par clic ; à égalité on garde l'ordre par défaut (% de victoires, victoires, différence de buts).
+	const rows = $derived([...data.rows].sort((a, b) => b[sort] - a[sort]));
 	const cols: { k: Key; label: string }[] = [
-		{ k: 'played', label: 'J' }, { k: 'wins', label: 'V' }, { k: 'winRate', label: '%V' }, { k: 'goalDiff', label: '+/-' }, { k: 'elo', label: 'Elo' }
+		{ k: 'played', label: 'J' }, { k: 'wins', label: 'V' }, { k: 'winRate', label: '%V' }, { k: 'goalDiff', label: '+/-' }
 	];
 </script>
 
@@ -38,7 +39,6 @@
 						<td class="num W">{r.wins}</td>
 						<td class="num">{r.winRate.toFixed(0)}</td>
 						<td class="num" class:W={r.goalDiff > 0} class:L={r.goalDiff < 0}>{r.goalDiff > 0 ? '+' : ''}{r.goalDiff}</td>
-						<td class="num"><strong>{r.elo}</strong></td>
 						<td class="num D">{r.draws}</td>
 						<td class="num L">{r.losses}</td>
 						<td class="num">{r.goalsFor}</td>
@@ -49,7 +49,7 @@
 			</tbody>
 		</table>
 	</div>
-	<p class="muted note">Elo : départ à 1000, K=24, calculé match après match. Une victoire aux tirs au but compte comme une victoire.</p>
+	<p class="muted note">Classé par % de victoires. Une victoire aux tirs au but compte comme une victoire.</p>
 {/if}
 
 <style>

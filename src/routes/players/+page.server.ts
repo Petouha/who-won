@@ -8,7 +8,7 @@ import { getMatches, getPlayers, lite } from '#lib/server/queries.ts';
 export const load = () => {
 	const players = getPlayers();
 	const stats = new Map(computeStandings(getMatches().map(lite), players.map((p) => p.id)).map((s) => [s.playerId, s]));
-	return { players: players.map((p) => ({ id: p.id, name: p.name, played: stats.get(p.id)?.played ?? 0, elo: stats.get(p.id)?.elo ?? 1000 })) };
+	return { players: players.map((p) => ({ id: p.id, name: p.name, played: stats.get(p.id)?.played ?? 0 })) };
 };
 
 export const actions = {

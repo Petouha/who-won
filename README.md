@@ -1,6 +1,6 @@
 # Who Won
 
-Suivi des matchs FIFA (EA FC 26) entre amis : saisie rapide, historique, classement Elo, face-à-face, tirage d'équipes équilibrées.
+Suivi des matchs FIFA (EA FC 26) entre amis : saisie rapide, historique, classement, face-à-face, tirage d'équipes équilibrées.
 
 > L'ancienne version Flask est conservée dans [`legacy/`](legacy/) pour référence.
 
@@ -26,7 +26,7 @@ La base (`data/who-won.db`) est créée au premier lancement : migrations appliq
 - `team` : équipes avec leurs notes (global, attaque, milieu, défense), id sofifa en `source_id`.
 - `match` : 1v1, buts, tirs au but optionnels, note des équipes *au moment du match*. Contraintes SQL (joueurs différents, buts ≥ 0, tirs au but cohérents).
 
-Le vainqueur n'est jamais stocké. Classement, Elo et face-à-face sont calculés depuis `match` (`src/lib/stats.ts`), donc modifier ou supprimer un match ne désynchronise rien.
+Le vainqueur n'est jamais stocké. Classement et face-à-face sont calculés depuis `match` (`src/lib/stats.ts`), donc modifier ou supprimer un match ne désynchronise rien.
 
 ## Accès
 
