@@ -42,10 +42,14 @@ rsync -a build drizzle data/team_ratings.csv package.json package-lock.json user
 
 Variables d'environnement (voir `.env.example`) : `ACCESS_CODE`, `SESSION_SECRET`, **`ORIGIN`** (l'URL publique en https, sinon SvelteKit refuse les formulaires), `PORT`, `DATABASE_URL`. Lancer avec `node build` sous systemd ; Caddy fait `reverse_proxy localhost:3000`. Sauvegarde : copier `data/who-won.db` (SQLite en mode WAL : utiliser `sqlite3 .backup`).
 
-## Synchro des notes d'équipes (à faire)
+## Synchro des notes d'équipes
 
-`data/team_ratings.csv` est l'export FC 25 d'origine : **les notes ne sont pas encore celles de FC 26.** Recherche faite le 10/11/2026 :
+sofifa est protégé par Cloudflare : un script ne peut pas télécharger les pages seul. On enregistre donc les pages depuis un navigateur, et un script les transforme en CSV.
 
-- sofifa.com est derrière un challenge Cloudflare interactif (y compris `robots.txt`) : pas de scraping `curl`, pas de navigateur headless fiable.
-- `soccerdata` (probberechts) est le seul outil maintenu : il passe par `seleniumbase` (mode UC) mais ne lit que id/nom/ligue, pas les notes.
-- Piste retenue : un script d'import qui lit des pages `https://sofifa.com/teams?type=all&r=<version>&set=true&offset=…` **enregistrées depuis un vrai navigateur**, jointure par id sofifa (jamais par nom), `upsert` dans `team`. Les matchs gardent leurs notes d'époque.
+1. Ouvre https://sofifa.com/teams?col=oa&sort=desc&set=true (la version affichée par défaut est la plus récente ; vérifie la date dans la liste « mise à jour »).
+2. Enregistre la page : clic droit, « Enregistrer sous… », type **Page web, HTML uniquement**, dans `data/sofifa-pages/`.
+3. Clique sur « Suivant » et recommence, jusqu'à la page qui n'a plus de bouton « Suivant » (≈ 10 pages de 75 équipes).
+4. `npm run sync:teams -- --dry` pour vérifier (pages manquantes, mélange de mises à jour, notes modifiées), puis `npm run sync:teams` pour écrire `data/team_ratings.csv` et `data/team_ratings.meta.json`.
+5. Commite ces deux fichiers. Au démarrage, l'app met à jour ses équipes depuis le CSV, par id sofifa : nouvelles notes, aucune suppression. Les matchs déjà joués gardent la note de l'époque.
+
+Le script refuse d'écrire s'il manque beaucoup d'équipes ou si les pages viennent de plusieurs mises à jour. Un ancien essai d'automatisation (Playwright, voir le fork `sofifa-web-scraper`) est bloqué par Cloudflare depuis novembre 2026.

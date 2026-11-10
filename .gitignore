@@ -20,3 +20,6 @@ venv/
 # Éditeurs / OS
 .DS_Store
 .idea/
+
+# Pages sofifa enregistrées à la main (entrée du script sync-teams, ~1 Mo)
+data/sofifa-pages/

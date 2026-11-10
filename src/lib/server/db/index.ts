@@ -1,11 +1,12 @@
 import { mkdirSync, readFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import Database from 'better-sqlite3';
+import { sql } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import { migrate } from 'drizzle-orm/better-sqlite3/migrator';
 import { building } from '$app/env';
 import * as schema from './schema';
-import { parseTeamsCsv } from './teams-csv';
+import { parseTeamsCsv } from '../../sofifa/teams-csv.ts';
 
 // Pendant `vite build`, SvelteKit importe ce module pour analyser les routes : base en mémoire, rien sur disque.
 const file = building ? ':memory:' : (process.env.DATABASE_URL ?? 'data/who-won.db');
@@ -19,8 +20,20 @@ export const db = drizzle(sqlite, { schema });
 // Les migrations s'appliquent au démarrage : un déploiement = copier le build et relancer.
 migrate(db, { migrationsFolder: process.env.MIGRATIONS_DIR ?? 'drizzle' });
 
-// Premier lancement : on charge les équipes depuis le CSV (la synchro sofifa viendra plus tard).
-if (!building && db.select({ id: schema.team.id }).from(schema.team).limit(1).all().length === 0) {
+// Les équipes viennent de data/team_ratings.csv (produit par `npm run sync:teams`).
+// À chaque démarrage on les met à jour par id sofifa : nouvelles notes, jamais de suppression
+// (les matchs référencent les équipes, et gardent de toute façon la note de leur époque).
+if (!building) {
 	const rows = parseTeamsCsv(readFileSync(process.env.TEAMS_CSV ?? 'data/team_ratings.csv', 'utf-8'));
-	db.insert(schema.team).values(rows).run();
+	db.transaction((tx) => {
+		for (const r of rows) {
+			tx.insert(schema.team)
+				.values(r)
+				.onConflictDoUpdate({
+					target: schema.team.sourceId,
+					set: { name: r.name, league: r.league, overall: r.overall, attack: r.attack, midfield: r.midfield, defence: r.defence, updatedAt: sql`(unixepoch())` }
+				})
+				.run();
+		}
+	});
 }
