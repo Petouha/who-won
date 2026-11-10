@@ -7,7 +7,7 @@
 	const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 	const pages = [];
 	let url = location.href;
-	while (url && pages.length < 40) {
+	while (url && pages.length < 80) {
 		const res = await fetch(url, { credentials: 'same-origin' });
 		const html = await res.text();
 		if (!res.ok || /<title>[^<]*(just a moment|un instant)/i.test(html)) {
@@ -17,7 +17,7 @@
 		pages.push({ url, html });
 		console.log(`page ${pages.length} ok`);
 		const doc = new DOMParser().parseFromString(html, 'text/html');
-		const next = [...doc.querySelectorAll('.pagination a')].find((a) => /suivant|next/i.test(a.textContent));
+		const next = [...doc.querySelectorAll('a[href*="offset="]')].find((a) => /^\s*(suivant|next)/i.test(a.textContent));
 		url = next ? new URL(next.getAttribute('href'), location.origin).href : null;
 		if (url) await sleep(1500);
 	}

@@ -36,6 +36,34 @@ describe('parseTeamsPage', () => {
 	});
 });
 
+describe('parseTeamsPage (mobile layout)', () => {
+	const star = '<svg class="star"></svg>'.repeat(5);
+	const item = (id: number, name: string, league: string, oa: number, at: number, md: number, df: number, leagueHtml = `<a href="/teams?as=6" rel="nofollow">${league}</a>`) =>
+		`<li class="pure-g"><figure class="avatar"><img data-src="x"></figure><div class="pure-u-12-24"><a href="/team/${id}/x/260046/">${name}</a></div><div class="pure-u-5-24 text-right">#1</div>` +
+		`<div class="pure-u-17-24"><em title="${oa}">${oa}</em> ${star}</div>` +
+		`<div class="pure-u-17-24"><em title="${at}">${at}</em> <abbr>ATT</abbr>&nbsp;&nbsp;<em title="${md}">${md}</em> <abbr>MIL</abbr>&nbsp;&nbsp;<em title="${df}">${df}</em> <abbr>DEF</abbr></div>` +
+		`<div class="pure-u-1-1">${leagueHtml}</div><div class="pure-u-17-24"><em>26.36</em></div></li>`;
+	const mobile = (items: string, nav: string) =>
+		`<html><head><title>FC26 - Clubs | SoFIFA</title></head><body><h2 class="pure-menu-heading">FC26&nbsp;&nbsp;23 juil. 2026</h2><ul class="pure-menu-list"><li class="pure-menu-item">x</li></ul><ul class="list">${items}</ul>${nav}</body></html>`;
+	const nav = (n: number | null, p: number | null) =>
+		(p === null ? '<button class="pure-button">Précédent</button>' : `<a href="/teams?r=260046&offset=${p}" class="pure-button">Précédent</a>`) +
+		(n === null ? '' : `<a href="/teams?r=260046&set=true&offset=${n}" class="pure-button">Suivant</a>`);
+
+	it('reads ratings, league, update and pagination', () => {
+		const items = item(1335, 'France', 'UEFA', 86, 87, 86, 84) + item(73, 'Paris Saint-Germain', "Ligue 1 McDonald's", 85, 85, 86, 86, `<a href="/players?na=18"></a><a href="/league/16">Ligue 1 McDonald's</a>`);
+		const p = parseTeamsPage(mobile(items, nav(2, null)));
+		expect(p.layout).toBe('mobile');
+		expect(p.teams[0]).toEqual({ sourceId: 1335, name: 'France', league: 'UEFA', overall: 86, attack: 87, midfield: 86, defence: 84 });
+		expect(p.teams[1]).toMatchObject({ league: "Ligue 1 McDonald's", overall: 85, attack: 85, midfield: 86, defence: 86 });
+		expect(p).toMatchObject({ offset: 0, hasNext: true, updateId: '260046', updateLabel: '23 juil. 2026' });
+	});
+	it('derives offsets, including the last page', () => {
+		const items = item(1, 'A', 'L', 70, 71, 72, 73);
+		expect(parseTeamsPage(mobile(items, nav(60, 20))).offset).toBe(59); // 1 ligne : suivant 60 - 1
+		expect(parseTeamsPage(mobile(items, nav(null, 660)))).toMatchObject({ offset: 680, hasNext: false });
+	});
+});
+
 describe('teams csv', () => {
 	it('round-trips names with commas and quotes', () => {
 		const teams = [

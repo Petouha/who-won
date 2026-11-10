@@ -6,7 +6,7 @@
 //   npm run sync:teams -- --force          # écrit même s'il manque beaucoup d'équipes
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { PAGE_SIZE, parseTeamsPage, type ParsedTeamsPage } from '../src/lib/sofifa/parse-teams.ts';
+import { PAGE_SIZES, parseTeamsPage, type ParsedTeamsPage } from '../src/lib/sofifa/parse-teams.ts';
 import { parseTeamsCsv, stringifyTeamsCsv, type TeamRow } from '../src/lib/sofifa/teams-csv.ts';
 
 const args = process.argv.slice(2);
@@ -47,7 +47,7 @@ const pages: (ParsedTeamsPage & { file: string })[] = sources.map(({ name, html 
 	}
 });
 console.log(`${pages.length} page(s) lue(s) :`);
-for (const p of pages) console.log(`  offset ${String(p.offset).padStart(4)} · ${String(p.teams.length).padStart(2)} équipes · mise à jour ${p.updateLabel ?? '?'} · ${p.file}`);
+for (const p of pages) console.log(`  offset ${String(p.offset).padStart(4)} · ${String(p.teams.length).padStart(2)} équipes · ${p.layout} · mise à jour ${p.updateLabel ?? '?'} · ${p.file}`);
 
 // 2. Une seule mise à jour du jeu, sinon on mélangerait des notes de dates différentes
 const updates = new Set(pages.map((p) => p.updateId));
@@ -57,14 +57,19 @@ if (updates.size !== 1 || updates.has(null)) {
 const updateId = pages[0].updateId!;
 const updateLabel = pages[0].updateLabel;
 
-// 3. Pages manquantes ?
-const offsets = new Set(pages.map((p) => p.offset));
-const lastOffset = Math.max(...offsets);
-const missing: number[] = [];
-for (let o = 0; o <= lastOffset; o += PAGE_SIZE) if (!offsets.has(o)) missing.push(o);
-const hasLast = pages.some((p) => !p.hasNext);
-if (missing.length) console.warn(`\n⚠ Pages manquantes (offset) : ${missing.join(', ')}`);
-if (!hasLast) console.warn(`⚠ Aucune page finale (sans bouton « Suivant ») : il manque au moins la page offset=${lastOffset + PAGE_SIZE}.`);
+// 3. Pages manquantes ? (les offsets avancent de 75 en desktop, de 20 en mobile ; on ne compare pas deux mises en page)
+const layouts = new Set(pages.map((p) => p.layout));
+if (layouts.size > 1) {
+	console.warn('\n⚠ Pages de mises en page différentes (desktop et mobile) : vérification des pages manquantes ignorée.');
+} else {
+	const step = PAGE_SIZES[pages[0].layout];
+	const offsets = new Set(pages.map((p) => p.offset));
+	const lastOffset = Math.max(...offsets);
+	const missing: number[] = [];
+	for (let o = 0; o <= lastOffset; o += step) if (!offsets.has(o)) missing.push(o);
+	if (missing.length) console.warn(`\n⚠ Pages manquantes (offset) : ${missing.join(', ')}`);
+	if (!pages.some((p) => !p.hasNext)) console.warn(`⚠ Aucune page finale (sans bouton « Suivant ») : il manque au moins la page offset=${lastOffset + step}.`);
+}
 
 // 4. Fusion par id sofifa
 const byId = new Map<number, TeamRow>();
